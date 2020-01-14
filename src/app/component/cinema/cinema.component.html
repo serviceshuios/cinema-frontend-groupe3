@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-5">
+		<div class="col-md-4">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h4>Ajout d'un Cinema</h4>
@@ -8,28 +8,65 @@
 				<div class="panel-body">
 					<p>Mon formulaire</p>
 					<div>
-						<label>Marque: </label>
-						<input class="espace1" [(ngModel)]="ordinateur.marque"><br>
+						<label>Nom: </label><br>
+						<input [(ngModel)]="cinema.name" placeholder="Entrer un nom"><br>
+						<label>Longitude: </label><br>
+						<input [(ngModel)]="cinema.longitude" placeholder="Entrer une Longitude"><br>
+						<label>Latitude: </label><br>
+						<input [(ngModel)]="cinema.latitude" placeholder="Entrer une Latitude"><br>
+						<label>Altitude: </label><br>
+						<input [(ngModel)]="cinema.altitude" placeholder="Entrer un Altitude"><br>
+						<label>Nombre de Places: </label><br>
+						<input [(ngModel)]="cinema.nombreSalles" placeholder="Entrer un Nombre de Salle"><br><br>
 
-						<select ng-model="selectedName" ng-options="x for x in names"></select>
+						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
 						
 						<span *ngIf="test == 0">
-							<button (click)="saveOrdinateur()" class="btn btn-success">Ajouter</button>
+							<button (click)="saveCinema()" class="btn btn-success">Ajouter</button>
 						</span>
 						<span *ngIf="test == 1">
-							<button (click)="saveOrdinateur()" class="btn btn-warning">Modifier</button>
+							<button (click)="saveCinema()" class="btn btn-warning">Modifier</button>
 						</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
 					<h4>Liste des Cinema</h4>
 				</div>
 				<div class="panel-body">
-					
+					<div *ngIf="cinemas.length>0">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td>#ID</td>
+									<td>NOM</td>
+									<td>LONGITUDE</td>
+									<td>LATITUDE</td>
+									<td>ALTITUDE</td>
+									<td>NOMBRE SALLES</td>
+									<td>MODIFICATION</td>
+									<td>SUPPRESSION</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let c of cinemas">
+									<td> {{c.id}}</td>
+									<td> {{c.name}}</td>
+									<td> {{c.longitude}}</td>
+									<td> {{c.latitude}}</td>
+									<td> {{c.altitude}}</td>
+									<td> {{c.nombreSalles}}</td>
+									<td><button class="clickable btn btn-success"
+											(click)="updateCinema(c.id)">Modifier</button></td>
+									<td><button class="clickable btn btn-danger"
+											(click)="deleteCinema(c.id)">Delete</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>					
 				</div>
 			</div>
 		</div>
