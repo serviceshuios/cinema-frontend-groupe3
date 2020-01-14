@@ -1,3 +1,73 @@
-<p>
-  projectionfilm works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4>Ajout d'une projection</h4>
+				</div>
+				<div class="panel-body">
+					<p>Mon formulaire</p>
+					<div>
+						<label>Id film : </label><br>
+						<input [(ngModel)]="projection.filmId" placeholder="Entrer l'id du film"><br>
+						<label>Id salle : </label><br>
+						<input [(ngModel)]="projection.salleId" placeholder="Entrer l'id de la salle"><br>
+						<label>Date de projection : </label><br>
+						<input [(ngModel)]="projection.dateProjection" placeholder="Entrer la date"><br>
+						<label>Prix : </label><br>
+						<input [(ngModel)]="projection.prix" placeholder="Entrer le prix"><br>
+
+
+						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+						
+						<span *ngIf="test == 0">
+							<button (click)="saveProjection()" class="btn btn-success">Ajouter</button>
+						</span>
+						<span *ngIf="test == 1">
+							<button (click)="saveProjection()" class="btn btn-warning">Modifier</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Liste des projections</h4>
+				</div>
+				<div class="panel-body">
+					<div *ngIf="projections.length>0">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td>ID Film</td>
+									<td>ID Salle</td>
+									<td>Date</td>
+									<td>Prix</td>
+
+									<td>MODIFICATION</td>
+									<td>SUPPRESSION</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let p of projections">
+									<td> {{p.filmId}}</td>
+									<td> {{p.salleId}}</td>
+									<td> {{p.dateProjection}}</td>
+									<td> {{p.prix}}</td>
+
+									<!-- <td><button class="clickable btn btn-success"
+											(click)="updateProjection(p.id)">Modifier</button></td> -->
+									<td><button class="clickable btn btn-danger"
+											(click)="deleteProjection(p.id)">Delete</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
