@@ -9,10 +9,22 @@
 					<p>Mon formulaire</p>
 					<div>
 						<label>Heure de debut: </label><br>
-						<input [(ngModel)]="seance.heureDebut" placeholder="Entrer une Heure de Debut"><br><br>
+						<!-- <input [(ngModel)]="seance.heureDebut" placeholder="Entrer une Heure de Debut"><br><br> -->
+<!-- 
+						<div class="md-form">
+							<input [(ngModel)]="seance.heureDebut" type="time" id="input" class="form-control"
+								value="13:00" mdbInput />
+
+						</div> -->
+
+						<div class="md-form">
+							<input  [(ngModel)]="seance.heureDebut" type="datetime-local" id="input" class="form-control" mdbInput>
+							<label for="input">Choose your date</label>
+						</div>
+
 
 						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
-						
+
 						<span *ngIf="test == 0">
 							<button (click)="saveSeance()" class="btn btn-success">Ajouter</button>
 						</span>
@@ -50,10 +62,9 @@
 								</tr>
 							</tbody>
 						</table>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
