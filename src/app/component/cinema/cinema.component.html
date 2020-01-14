@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4>Ajout d'un Cinema</h4>
+				</div>
+				<div class="panel-body">
+					<p>Mon formulaire</p>
+					<div>
+						<label>Marque: </label>
+						<input class="espace1" [(ngModel)]="ordinateur.marque"><br>
+
+						<select ng-model="selectedName" ng-options="x for x in names"></select>
+						
+						<span *ngIf="test == 0">
+							<button (click)="saveOrdinateur()" class="btn btn-success">Ajouter</button>
+						</span>
+						<span *ngIf="test == 1">
+							<button (click)="saveOrdinateur()" class="btn btn-warning">Modifier</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Liste des Cinema</h4>
+				</div>
+				<div class="panel-body">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
