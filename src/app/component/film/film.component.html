@@ -1,1 +1,44 @@
-<h1>Testt  qsd </h1>
+<h1>test</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>Ajouter Un Film</h4>
+				</div>
+				<div class="panel-body">
+					<!-- formulaire de saisie de commentaire -->
+					<div>
+						<input [(ngModel)]="film.nomFilm">
+						<button (click)="saveFilm()" class="btn bg-primary espace">
+							Ajouter
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Lister les Films</h4>
+				</div>
+				<div class="panel-body">
+					<div *ngIf="films.length>0">
+						<table class="table table-striped">
+							<tr>
+								<td>ID</td>
+								<td>Film</td>
+							</tr>
+							<tr *ngFor="let f of films">
+								<td> {{f.idFiliere}}</td>
+								<td> {{f.nomFiliere}}</td>
+								<td><a class="btn btn-danger" (click)="detailFilm(f.idFilm)">Detail</a></td>
+								<td><button class="btn btn-success" (click)="deleteFilm(f.idFilm)">Delete</button></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
