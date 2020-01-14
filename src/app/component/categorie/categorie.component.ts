@@ -28,16 +28,16 @@ export class CategorieComponent implements OnInit {
     this.categorieService.addCategorie(this.categorie)
     .subscribe(data => {
       this.categorie = data
-      this.getAllCategories();
       this.categorie.id = 0;
       this.categorie.name = '';
+      this.getAllCategories();
     })
   } // fin save 
 
     getAllCategories() {
       this.categorieService.getAllCategories()                      
       .subscribe (data => {
-        this.categorie = data
+        this.categories = data
       })
     } // getAll 
 
