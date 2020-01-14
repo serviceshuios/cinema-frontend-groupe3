@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>Ajouter une Ville</h4>
+				</div>
+				<div class="panel-body">
+					<!-- formulaire de saisie de commentaire -->
+					<div>
+						<input [(ngModel)]="ville.name">
+						<button (click)="saveVille()" class="btn bg-primary espace">
+							Ajouter
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Lister les filieres</h4>
+				</div>
+				<div class="panel-body">
+					<div *ngIf="villes.length>0">
+						<table class="table table-striped">
+							<tr>
+								<td>ID</td>
+                <td>name</td>
+                <td>longitude</td>
+                <td>latitude</td>
+                <td>altitude</td>
+							</tr>
+							<tr *ngFor="let v of villes">
+								<td> {{v.id}}</td>
+                <td> {{v.name}}</td>
+                <td> {{v.longitude}}</td>
+                <td> {{v.latitude}}</td>
+                <td> {{v.altitude}}</td>
+
+								<td><button class="btn btn-primary" (click)="updateVille(v.id)">Detail</button></td>
+								<button class="btn btn-danger" (click)="deleteVille(v.id)">Delete</button>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

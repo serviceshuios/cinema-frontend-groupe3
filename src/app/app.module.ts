@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { CategorieComponent } from './component/categorie/categorie.component';
 import { FilmComponent } from './component/film/film.component';
 import { AppRoutingModule } from './app-routing.module';
+import { VilleComponent } from './component/ville/ville.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategorieComponent,
-    FilmComponent
+    FilmComponent,
+    VilleComponent
   ],
   imports: [
     BrowserModule,
