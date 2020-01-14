@@ -16,6 +16,8 @@ import { TicketComponent } from './component/ticket/ticket.component';
 import { ProjectionfilmComponent } from './component/projectionfilm/projectionfilm.component';
 import { AccueilComponent } from './component/accueil/accueil.component';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AccueilComponent } from './component/accueil/accueil.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

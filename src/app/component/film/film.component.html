@@ -16,14 +16,19 @@
 							<input [(ngModel)]="film.description" class="form-control"> description <br><br>
 							<input [(ngModel)]="film.photo" class="form-control"> photo <br><br>
 
-							<input [(ngModel)]="film.dateSortie" type="date" id="input" class="form-control" mdbInput> Date <br><br>
+							<input [(ngModel)]="film.dateSortie" type="date" id="input" class="form-control" mdbInput>
+							Date <br><br>
 
 							<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
-							
+
+							<ng-select [items]="categories" bindLabel="name" placeholder="Choisir une categorie"
+								[(ngModel)]="film">
+							</ng-select>
+
 							<!-- <input [(ngModel)]="film.dateSortie"> Date de Sortie <br><br> -->
 
 							<button (click)="saveFilm()" class="btn bg-primary espace">
-							Ajouter
+								Ajouter
 							</button>
 						</div>
 					</div>

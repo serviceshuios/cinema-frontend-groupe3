@@ -1,3 +1,5 @@
+import { Categorie } from './categorie.model';
+
 export class Film {
 	public id: number;
 	public titre: string;
