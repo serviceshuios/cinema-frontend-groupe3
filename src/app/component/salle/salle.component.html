@@ -1,3 +1,62 @@
-<p>
-  salle works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4>Ajout d'une Salle</h4>
+				</div>
+				<div class="panel-body">
+					<p>Mon formulaire</p>
+					<div>
+						<label>Nom: </label><br>
+						<input [(ngModel)]="salle.name" placeholder="Entrer un nom"><br>
+						<label>Nombre de Places: </label><br>
+						<input [(ngModel)]="salle.nombrePlaces" placeholder="Entrer un Nombre de Place"><br><br>
+
+						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+						
+						<span *ngIf="test == 0">
+							<button (click)="saveSalle()" class="btn btn-success">Ajouter</button>
+						</span>
+						<span *ngIf="test == 1">
+							<button (click)="saveSalle()" class="btn btn-warning">Modifier</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Liste des Salles</h4>
+				</div>
+				<div class="panel-body">
+					<div *ngIf="salles.length>0">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td>#ID</td>
+									<td>NOM</td>
+									<td>NOMBRE PLACES</td>
+									<td>MODIFICATION</td>
+									<td>SUPPRESSION</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let s of salles">
+									<td> {{s.id}}</td>
+									<td> {{s.name}}</td>
+									<td> {{s.nombrePlaces}}</td>
+									<td><button class="clickable btn btn-success"
+											(click)="updateSalle(s.id)">Modifier</button></td>
+									<td><button class="clickable btn btn-danger"
+											(click)="deleteSalle(s.id)">Delete</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
