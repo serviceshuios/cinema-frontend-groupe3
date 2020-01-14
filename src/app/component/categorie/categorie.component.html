@@ -1,3 +1,43 @@
-<p>
-  categorie works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>Ajouter un categorie</h4>
+				</div>
+				<div class="panel-body">
+					<!-- formulaire de saisie de commentaire -->
+					<div>
+						<input [(ngModel)]="categorie.name">
+						<button (click)="saveCategorie()" class="btn bg-primary espace">
+							Ajouter
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Lister les categories</h4>
+				</div>
+				<div class="panel-body">
+					<div *ngIf="categories.length>0">
+						<table class="table table-striped">
+							<tr>
+								<td>ID</td>
+								<td>NAME</td>
+							</tr>
+							<tr *ngFor="let c of categories">
+								<td> {{c.id}}</td>
+								<td> {{c.name}}</td>
+								<td><a class="clickable" (click)="detailCategorie(c.id)">Detail</a></td>
+								<td><a class="clickable" (click)="deleteCategorie(c.id)">Delete</a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
