@@ -9,9 +9,9 @@
 					<p>Mon formulaire</p>
 					<div>
 						<label>Id film : </label><br>
-						<input [(ngModel)]="projection.filmId" placeholder="Entrer l'id du film"><br>
+						<input [(ngModel)]="projection.id.film.titre" placeholder="Entrer l'id du film"><br>
 						<label>Id salle : </label><br>
-						<input [(ngModel)]="projection.salleId" placeholder="Entrer l'id de la salle"><br>
+						<input [(ngModel)]="projection.id.salle.name" placeholder="Entrer l'id de la salle"><br>
 						<label>Date de projection : </label><br>
 						<input [(ngModel)]="projection.dateProjection" placeholder="Entrer la date"><br>
 						<label>Prix : </label><br>
@@ -51,14 +51,14 @@
 							</thead>
 							<tbody>
 								<tr *ngFor="let p of projections">
-									<td> {{p.filmId}}</td>
-									<td> {{p.salleId}}</td>
-									<td> {{p.dateProjection}}</td>
+									<td> {{p.id.film.titre}}</td>
+									<td> {{p.id.salle.name}}</td>
+									<td> {{p.dateProjection | date:'MM/dd'}}</td>
 									<td> {{p.prix}}</td>
 
-									<!-- <td><button class="clickable btn btn-success"
-											(click)="updateProjection(p.id)">Modifier</button></td> -->
-									<td><button class="clickable btn btn-danger"
+									 <td><button class="clickable btn btn-success"
+											(click)="updateProjection(p.id)">Modifier</button></td>
+											<td><button class="clickable btn btn-danger"
 											(click)="deleteProjection(p.id)">Delete</button></td>
 								</tr>
 							</tbody>

@@ -1,9 +1,9 @@
 export class Film {
 	public id: number;
-	public titre: String;
+	public titre: string;
 	public duree: number;
 	//public realisateur: String;
-	public description: String;
-	public photo: String;
+	public description: string;
+	public photo: string;
 	public dateSortie: Date;
 }

@@ -1,6 +1,7 @@
+import { SalleFilmId } from './sallefilmid.model';
+
 export class Projection {
-public salleId: number;
-public filmId: number;
+public id: SalleFilmId;
 public dateProjection: Date;
 public prix: number;
 }
