@@ -9,7 +9,7 @@
 				<div class="panel-body">
 					<!-- formulaire de saisie de commentaire -->
 					<div>
-						<input [(ngModel)]="film.nomFilm">
+						<input [(ngModel)]="film.titre">
 						<button (click)="saveFilm()" class="btn bg-primary espace">
 							Ajouter
 						</button>
@@ -28,6 +28,10 @@
 							<tr>
 								<td>ID</td>
 								<td>Film</td>
+								<td>Titre</td>
+								<td>Duree</td>
+								<td>realisateur</td>
+								<td>description</td>
 							</tr>
 							<tr *ngFor="let f of films">
 								<td> {{f.idFiliere}}</td>
