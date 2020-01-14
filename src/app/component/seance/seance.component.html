@@ -1,3 +1,59 @@
-<p>
-  seance works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4>Ajout d'une Seance</h4>
+				</div>
+				<div class="panel-body">
+					<p>Mon formulaire</p>
+					<div>
+						<label>Heure de debut: </label><br>
+						<input [(ngModel)]="seance.heureDebut" placeholder="Entrer une Heure de Debut"><br><br>
+
+						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+						
+						<span *ngIf="test == 0">
+							<button (click)="saveSeance()" class="btn btn-success">Ajouter</button>
+						</span>
+						<span *ngIf="test == 1">
+							<button (click)="saveSeance()" class="btn btn-warning">Modifier</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Liste des Seances</h4>
+				</div>
+				<div class="panel-body">
+					<div *ngIf="seances.length>0">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td>#ID</td>
+									<td>HEURE DE DEBUT</td>
+									<td>MODIFICATION</td>
+									<td>SUPPRESSION</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let s of seances">
+									<td> {{s.id}}</td>
+									<td> {{s.heureDebut}}</td>
+									<td><button class="clickable btn btn-success"
+											(click)="updateSeance(s.id)">Modifier</button></td>
+									<td><button class="clickable btn btn-danger"
+											(click)="deleteSeance(s.id)">Delete</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
