@@ -3,21 +3,29 @@
 		<div class="col-md-12">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h4>Ajouter Un  Film</h4>
+					<h4>Ajouter Un Film</h4>
 				</div>
 				<div class="panel-body">
 					<!-- formulaire de saisie de commentaire -->
 					<div>
-						<input [(ngModel)]="film.titre"> Titre<br><br>
-						<input [(ngModel)]="film.duree"> Duree <br><br>
-						<!-- <input [(ngModel)]="film.realisateur"> Réalisateur <br><br> -->
-						<input [(ngModel)]="film.description"> description <br><br>
-						<input [(ngModel)]="film.photo"> photo <br><br>
-						<input [(ngModel)]="film.dateSortie"> Date de Sortie <br><br>
+						<br>
+						<div class="col-md-12">
+							<input [(ngModel)]="film.titre" class="form-control"> Titre<br><br>
+							<input [(ngModel)]="film.duree" class="form-control"> Duree <br><br>
+							<!-- <input [(ngModel)]="film.realisateur"> Réalisateur <br><br> -->
+							<input [(ngModel)]="film.description" class="form-control"> description <br><br>
+							<input [(ngModel)]="film.photo" class="form-control"> photo <br><br>
 
-						<button (click)="saveFilm()" class="btn bg-primary espace">
+							<input [(ngModel)]="film.dateSortie" type="date" id="input" class="form-control" mdbInput> Date <br><br>
+
+							<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+							
+							<!-- <input [(ngModel)]="film.dateSortie"> Date de Sortie <br><br> -->
+
+							<button (click)="saveFilm()" class="btn bg-primary espace">
 							Ajouter
-						</button>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -44,7 +52,7 @@
 								<td>{{f.duree}}</td>
 								<!-- <td>{{f.realisateur}}</td> -->
 								<td>{{f.description}}</td>
-								<td>{{f.dateSortie}}</td>
+								<td>{{f.dateSortie | date:'M/d/yy'}}</td>
 								<td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
 								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td>
 							</tr>

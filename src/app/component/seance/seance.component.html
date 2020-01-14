@@ -54,7 +54,7 @@
 							<tbody>
 								<tr *ngFor="let s of seances">
 									<td> {{s.id}}</td>
-									<td> {{s.heureDebut}}</td>
+									<td> {{s.heureDebut | date:'short'}}</td>
 									<td><button class="clickable btn btn-success"
 											(click)="updateSeance(s.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
