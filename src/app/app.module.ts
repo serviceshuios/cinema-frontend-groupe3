@@ -8,13 +8,15 @@ import { CategorieComponent } from './component/categorie/categorie.component';
 import { FilmComponent } from './component/film/film.component';
 import { AppRoutingModule } from './app-routing.module';
 import { VilleComponent } from './component/ville/ville.component';
+import { AccueilComponent } from './component/accueil/accueil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategorieComponent,
     FilmComponent,
-    VilleComponent
+    VilleComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
