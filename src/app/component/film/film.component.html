@@ -1,7 +1,6 @@
-<h1>test</h1>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h4>Ajouter Un Film</h4>
@@ -9,7 +8,13 @@
 				<div class="panel-body">
 					<!-- formulaire de saisie de commentaire -->
 					<div>
-						<input [(ngModel)]="film.titre">
+						<input [(ngModel)]="film.titre"> Titre<br><br>
+						<input [(ngModel)]="film.duree"> Duree <br><br>
+						<!-- <input [(ngModel)]="film.realisateur"> Réalisateur <br><br> -->
+						<input [(ngModel)]="film.description"> description <br><br>
+						<input [(ngModel)]="film.photo"> photo <br><br>
+						<input [(ngModel)]="film.dateSortie"> Date de Sortie <br><br>
+
 						<button (click)="saveFilm()" class="btn bg-primary espace">
 							Ajouter
 						</button>
@@ -17,7 +22,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
 					<h4>Lister les Films</h4>
@@ -27,17 +32,21 @@
 						<table class="table table-striped">
 							<tr>
 								<td>ID</td>
-								<td>Film</td>
 								<td>Titre</td>
 								<td>Duree</td>
-								<td>realisateur</td>
+								<!-- <td>realisateur</td> -->
 								<td>description</td>
+								<td>dateSortie</td>
 							</tr>
 							<tr *ngFor="let f of films">
-								<td> {{f.idFiliere}}</td>
-								<td> {{f.nomFiliere}}</td>
-								<td><a class="btn btn-danger" (click)="detailFilm(f.idFilm)">Detail</a></td>
-								<td><button class="btn btn-success" (click)="deleteFilm(f.idFilm)">Delete</button></td>
+								<td> {{f.id}}</td>
+								<td> {{f.titre}}</td>
+								<td>{{f.duree}}</td>
+								<!-- <td>{{f.realisateur}}</td> -->
+								<td>{{f.description}}</td>
+								<td>{{f.dateSortie}}</td>
+								<td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
+								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td>
 							</tr>
 						</table>
 					</div>
@@ -45,4 +54,29 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div *ngFor="let f of films">
+		<div class="col-md-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading tailleimage">
+					{{f.titre}}<br />
+				</div>
+				<div class="panel-body">
+					photo {{f.photo}}
+					<!-- <img src="{{p.previewURL}}" /> <br /> -->
+				</div>
+				<div class="panel-footer">
+					{{f.description}} <span class="glyphicon glyphicon-heart"></span> <br>
+					<a class="btn btn-success" (click)="detailFilm(f.id)">Detail</a>
+					<button class="btn btn-danger" (click)="deleteFilm(f.id)">Delete</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
 </div>
