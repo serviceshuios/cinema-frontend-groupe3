@@ -1,3 +1,56 @@
-<p>
-  place works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>Ajouter une place</h4>
+				</div>
+				<div class="panel-body">
+					<!-- formulaire de saisie de commentaire -->
+					<div>
+						
+						<input [(ngModel)]="place.numero" placeholder="numero"><br>
+						<input [(ngModel)]="place.longitude" placeholder="longitude"><br>
+						<input [(ngModel)]="place.latitude" placeholder="latitude"><br>
+						<input [(ngModel)]="place.altitude" placeholder="altitude"><br>
+						
+
+						<button (click)="savePlace()" class="btn bg-primary espace">
+							Ajouter
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4>Lister les places</h4>
+				</div>
+				<div class="panel-body">
+					<div *ngIf="places.length>0">
+						<table class="table table-striped">
+							<tr>
+								<td>ID</td>
+								<td>numero</td>
+								<td>longitude</td>
+								<td>latitude</td>
+								<td>altitude</td>
+							</tr>
+							<tr *ngFor="let p of places">
+								<td> {{p.id}}</td>
+								<td> {{p.numero}}</td>
+								<td> {{p.longitude}}</td>
+								<td> {{p.latitude}}</td>
+								<td> {{p.altitude}}</td>
+
+								<button class="btn btn-primary" (click)="updatePlace(p.id)">Modifier</button>
+								<button class="btn btn-danger" (click)="deletePlace(p.id)">Delete</button>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

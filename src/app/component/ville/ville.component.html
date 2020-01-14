@@ -8,10 +8,15 @@
 				<div class="panel-body">
 					<!-- formulaire de saisie de commentaire -->
 					<div>
-						<input [(ngModel)]="ville.name">
+						
+						<input [(ngModel)]="ville.name" placeholder="name"><br>
+						<input [(ngModel)]="ville.longitude" placeholder="longitude"><br>
+						<input [(ngModel)]="ville.latitude" placeholder="latitude"><br>
+						<input [(ngModel)]="ville.altitude" placeholder="altitude"><br>
+						
 
 						<button (click)="saveVille()" class="btn bg-primary espace">
-							Ajouterddd
+							Ajouter
 						</button>
 					</div>
 				</div>
@@ -39,7 +44,7 @@
 								<td> {{v.latitude}}</td>
 								<td> {{v.altitude}}</td>
 
-								<td><button class="btn btn-primary" (click)="updateVille(v.id)">Detail</button></td>
+								<button class="btn btn-primary" (click)="updateVille(v.id)">Modifier</button>
 								<button class="btn btn-danger" (click)="deleteVille(v.id)">Delete</button>
 							</tr>
 						</table>

@@ -12,9 +12,9 @@ export class VilleComponent implements OnInit {
   ville: Ville = {
     id: 0,
     name: "",
-    longitude: "",
-    latitude: "",
-    altitude: ""
+    longitude: 0,
+    latitude: 0,
+    altitude: 0
   }
 
   villes;
@@ -37,9 +37,9 @@ export class VilleComponent implements OnInit {
         this.ville = data
         this.ville.name = '';
         this.ville.id = 0;
-        this.ville.longitude = '';
-        this.ville.latitude = '';
-        this.ville.altitude = '';
+        this.ville.longitude = 0;
+        this.ville.latitude = 0;
+        this.ville.altitude = 0;
         this.getAllVilles();
       });
   }
