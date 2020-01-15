@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Ville } from '../models/ville.model';
 import { Observable } from 'rxjs';
+import { Cinema } from '../models/cinema.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ public host = "http://localhost:8082";
 
      public updateVille(id:number, ville: Ville): Observable<Ville>{
     return this.httpClient.put<Ville>(this.host+'/villes/'+id,ville);
+  }
+
+  public chercherCinemasVille(id:number): Observable<Array<Cinema>>{
+    return this.httpClient.get<Array<Cinema>>(this.host+'/villes/'+id+"/cinemas");
   }
 }

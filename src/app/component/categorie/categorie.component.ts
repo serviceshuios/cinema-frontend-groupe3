@@ -35,7 +35,7 @@ export class CategorieComponent implements OnInit {
   } // fin save 
 
     getAllCategories() {
-      this.categorieService.getAllCategories()                      
+      this.categorieService.getAllCategories()
       .subscribe (data => {
         this.categories = data
       })

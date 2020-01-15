@@ -17,6 +17,8 @@ import { ProjectionfilmComponent } from './component/projectionfilm/projectionfi
 import { AccueilComponent } from './component/accueil/accueil.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AdminComponent } from './component/admin/admin.component';
+import { ClientComponent } from './component/client/client.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     PlaceComponent,
     SeanceComponent,
     TicketComponent,
-    ProjectionfilmComponent
+    ProjectionfilmComponent,
+    AdminComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
