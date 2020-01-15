@@ -12,7 +12,7 @@
 						<div class="col-md-12">
 							<input [(ngModel)]="film.titre" class="form-control"> Titre<br><br>
 							<input [(ngModel)]="film.duree" class="form-control"> Duree <br><br>
-							<!-- <input [(ngModel)]="film.realisateur"> Réalisateur <br><br> -->
+							<input [(ngModel)]="film.realisateur"> Réalisateur <br><br>
 							<input [(ngModel)]="film.description" class="form-control"> description <br><br>
 							<input [(ngModel)]="film.photo" class="form-control"> photo <br><br>
 
@@ -29,9 +29,13 @@
 
 							<!-- <input [(ngModel)]="film.dateSortie"> Date de Sortie <br><br> -->
 
-							<button (click)="saveFilm()" class="btn bg-primary espace">
-								Ajouter
-							</button>
+							<span *ngIf="test == 0">
+								<button (click)="saveFilm()" class="btn btn-success">Ajouter</button>
+							</span>
+							<span *ngIf="test == 1">
+								<button (click)="saveFilm()" class="btn btn-warning">Modifier</button>
+							</span>
+
 						</div>
 					</div>
 				</div>

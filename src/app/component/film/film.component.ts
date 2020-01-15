@@ -15,7 +15,7 @@ export class FilmComponent implements OnInit {
   film: Film = {
     id: 0,
     titre: '',
-    // realisateur: '',
+    realisateur: '',
     duree: 0,
     description: '',
     photo: '',
@@ -23,21 +23,20 @@ export class FilmComponent implements OnInit {
     categorie: new Categorie()
   };
 
-  appcat: Categorie = {
-    id: 0,
-    name: ''
-  };
 
   // liste des categories
   films;
 
   categories;
 
+  test=0;
+
   constructor(private filmService: FilmService, private categorieService: CategorieService) { }
 
   ngOnInit() {
     this.getAllFilms();
     this.getAllCategories();
+    this.test = 0;
   }
 
   saveFilm() {
@@ -46,7 +45,7 @@ export class FilmComponent implements OnInit {
       this.film = data;
       this.film.id = 0;
       this.film.titre = '';
-      // this.film.realisateur = '';
+      this.film.realisateur = '';
       this.film.duree = 0;
       this.film.description = '';
       this.film.photo = '';
@@ -54,6 +53,7 @@ export class FilmComponent implements OnInit {
       this.film.categorie = new Categorie();
       this.getAllFilms();
       this.getAllCategories();
+      this.test = 0;
     });
   } // fin save
 
@@ -61,6 +61,7 @@ export class FilmComponent implements OnInit {
       this.filmService.getAllFilms()
       .subscribe (data => {
         this.films = data;
+        this.test = 0;
       });
     } // getAll
 
@@ -68,6 +69,7 @@ export class FilmComponent implements OnInit {
       this.filmService.getFilm(id)
       .subscribe (data => {
         this.film = data;
+        this.test = 1;
       });
     } // fin detail
 
@@ -75,6 +77,7 @@ export class FilmComponent implements OnInit {
       this.filmService.deleteFilm(id)
       .subscribe (data => {
         this.getAllFilms();
+        this.test = 0;
       });
     } // fin delete
 
@@ -82,6 +85,7 @@ export class FilmComponent implements OnInit {
       this.categorieService.getAllCategories()
       .subscribe (data => {
         this.categories = data;
+        this.test=0;
       });
     } // getAll
 

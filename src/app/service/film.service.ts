@@ -17,7 +17,7 @@ export class FilmService {
   } // fin getAll
 
   public getFilm(id: number): Observable<Film> {
-    return this.httpClient.get<Film>(this.host + '/films/ById/' + id);
+    return this.httpClient.get<Film>(this.host + '/films/' + id);
   } // fin getById
 
    public getFilmbyTitre(titre: string): Observable<Film> {
