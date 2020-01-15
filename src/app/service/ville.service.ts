@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Ville } from '../models/ville.model';
@@ -19,7 +20,7 @@ public host = "http://localhost:8082";
   }
 
    public getVille(id:number): Observable<Ville>{
-    return this.httpClient.get<Ville>(this.host+'/villes/'+id);
+    return this.httpClient.get<Ville>(this.host+'/villes/byId/'+id);
   }
 
      public addVille(ville: Ville): Observable<Ville>{
@@ -34,7 +35,11 @@ public host = "http://localhost:8082";
     return this.httpClient.put<Ville>(this.host+'/villes/'+id,ville);
   }
 
-  public chercherCinemasVille(nameVille: string): Observable<Array<Cinema>>{
-    return this.httpClient.get<Array<Cinema>>(this.host+'/villes/'+nameVille+"/cinemas");
+  public getVillebyName(nom:string): Observable<Ville>{
+    return this.httpClient.get<Ville>(this.host+'/villes/byName/'+nom);
+  }
+
+  public chercherCinemasVille(id: number): Observable<Array<Cinema>>{
+    return this.httpClient.get<Array<Cinema>>(this.host+'/villes/'+id+"/cinemas");
   }
 }

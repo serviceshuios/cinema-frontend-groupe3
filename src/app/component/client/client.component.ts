@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ville } from 'src/app/models/ville.model';
 import { VilleService } from 'src/app/service/ville.service';
+import { Cinema } from 'src/app/models/cinema.model';
 
 @Component({
   selector: 'app-client',
@@ -9,14 +9,28 @@ import { VilleService } from 'src/app/service/ville.service';
 })
 export class ClientComponent implements OnInit {
 
+  nomVille: "";
+  idVille = 0;
+
+  cinemas: Array<Cinema> = [];
+
   constructor(private villeService: VilleService) { }
 
   ngOnInit() {
   }
 
   chercherCinemas(nomVille: string) {
-    this.villeService.chercherCinemasVille(nomVille).subscribe(data =>{
+    this.villeService.getVillebyName(nomVille).subscribe(data => {
+      this.idVille = data.id;
+      this.villeService.chercherCinemasVille(this.idVille).subscribe(data2 => {
+        this.cinemas = data2;
+        this.nomVille = "";
+        this.idVille = 0;
+      })
 
-    })
+    }
+    )
   }
 }
+
+
