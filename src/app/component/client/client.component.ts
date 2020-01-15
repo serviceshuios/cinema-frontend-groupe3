@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ville } from 'src/app/models/ville.model';
+import { VilleService } from 'src/app/service/ville.service';
 
 @Component({
   selector: 'app-client',
@@ -8,12 +9,14 @@ import { Ville } from 'src/app/models/ville.model';
 })
 export class ClientComponent implements OnInit {
 
-  constructor(private ville) { }
+  constructor(private villeService: VilleService) { }
 
   ngOnInit() {
   }
 
-  chercherCinemas(ville: Ville){
+  chercherCinemas(nomVille: String){
+    this.villeService.chercherCinemasVille(nomVille).subscribe(data =>{
 
+    })
   }
 }
