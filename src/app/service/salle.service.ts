@@ -16,8 +16,12 @@ export class SalleService {
     return this.httpClient.get<Salle>(this.host + '/salles/');
   } // fin getAll
 
-  public getSalle(id: number): Observable<Salle> {
-    return this.httpClient.get<Salle>(this.host + '/salles/' + id);
+  public getSalleByid(id: number): Observable<Salle> {
+    return this.httpClient.get<Salle>(this.host + '/salles/byId/' + id);
+  } // fin getById
+
+  public getSalleByName(name: string): Observable<Salle> {
+    return this.httpClient.get<Salle>(this.host + '/salles/ByName/' + name);
   } // fin getById
 
   public addSalle(salle: Salle) {

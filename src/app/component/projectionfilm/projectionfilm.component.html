@@ -8,10 +8,10 @@
 				<div class="panel-body">
 					<p>Mon formulaire</p>
 					<div>
-						<label>Id film : </label><br>
-						<input [(ngModel)]="projection.id.film.titre" placeholder="Entrer l'id du film"><br>
-						<label>Id salle : </label><br>
-						<input [(ngModel)]="projection.id.salle.name" placeholder="Entrer l'id de la salle"><br>
+						<label>Titre film : </label><br>
+						<input [(ngModel)]="titreFilm" placeholder="Entrer le titre du film"><br>
+						<label>Nom salle : </label><br>
+						<input [(ngModel)]="nameSalle" placeholder="Entrer le nom de la salle"><br>
 						<label>Date de projection : </label><br>
 						<input [(ngModel)]="projection.dateProjection" placeholder="Entrer la date"><br>
 						<label>Prix : </label><br>
@@ -51,8 +51,8 @@
 							</thead>
 							<tbody>
 								<tr *ngFor="let p of projections">
-									<td> {{p.id.film.titre}}</td>
-									<td> {{p.id.salle.name}}</td>
+									<td> {{p.film.titre}}</td>
+									<td> {{p.salle.name}}</td>
 									<td> {{p.dateProjection | date:'MM/dd'}}</td>
 									<td> {{p.prix}}</td>
 

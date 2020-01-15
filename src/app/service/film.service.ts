@@ -17,19 +17,23 @@ export class FilmService {
   } // fin getAll
 
   public getFilm(id: number): Observable<Film> {
-    return this.httpClient.get<Film>(this.host + '/films/' + id);
+    return this.httpClient.get<Film>(this.host + '/films/ById/' + id);
   } // fin getById
 
-  public addFilm(categorie: Film) {
-    return this.httpClient.post<Film>(this.host + '/films/', categorie);
+   public getFilmbyTitre(titre: string): Observable<Film> {
+    return this.httpClient.get<Film>(this.host + '/films/byTitre/' + titre);
+  } // fin getById
+
+  public addFilm(film: Film) {
+    return this.httpClient.post<Film>(this.host + '/films/', film);
   } // fin add
 
   public deleteFilm(id: number) {
     return this.httpClient.delete<Film>(this.host + '/films/' + id);
   }// fin delete
 
-  public updateFilm(id: number, categorie: Film) {
-    return this.httpClient.put<Film>(this.host + '/films/' + id, categorie);
+  public updateFilm(id: number, film: Film) {
+    return this.httpClient.put<Film>(this.host + '/films/' + id, film);
   }// fin update
 
 

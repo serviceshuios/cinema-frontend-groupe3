@@ -1,9 +1,12 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Projection } from 'src/app/models/projection.model'
 import { ProjectionService } from 'src/app/service/projection.service';
 import { SalleFilmId } from 'src/app/models/sallefilmid.model';
 import { Film } from 'src/app/models/film.model';
 import { Salle } from 'src/app/models/salle.model';
+import { SalleService } from 'src/app/service/salle.service';
+import { FilmService } from 'src/app/service/film.service';
 
 @Component({
   selector: 'app-projectionfilm',
@@ -12,31 +15,16 @@ import { Salle } from 'src/app/models/salle.model';
 })
 export class ProjectionfilmComponent implements OnInit {
 
-  film: Film = {
-    id: 0,
-    titre: "",
-    duree: 0,
-    description: "",
-    photo: "",
-    dateSortie: null
-  }
+  titreFilm: "";
 
-  salle: Salle = {
-    id: 0,
-    name: "",
-    nombrePlaces: 0,
-  }
-
-  id: SalleFilmId = {
-    film: this.film,
-    salle: this.salle,
-  }
+  nameSalle: "";
 
   projection: Projection = {
-    id: this.id,
+    id: 0,
     dateProjection: null,
     prix: 0,
-
+    film: null,
+    salle: null,
   }
 
   projections;
@@ -44,7 +32,7 @@ export class ProjectionfilmComponent implements OnInit {
   // Variable de test
   test = 0;
 
-  constructor(private projectionService: ProjectionService) { }
+  constructor(private projectionService: ProjectionService, private salleService: SalleService,private filmService: FilmService) { }
 
   ngOnInit() {
     this.getAllProjections();
@@ -59,9 +47,19 @@ export class ProjectionfilmComponent implements OnInit {
   }
 
   saveProjection() {
+    this.salleService.getSalleByName(this.nameSalle).subscribe(data =>{
+      this.projection.salle = data;
+      this.nameSalle= "";
+    })
+
+    this.filmService.getFilmbyTitre(this.titreFilm).subscribe(data => {
+      this.projection.film= data;
+      this.titreFilm= "";
+    });
+
     this.projectionService.addProjection(this.projection)
       .subscribe(data => {
-        this.projection = data
+        this.projection = data;
         this.projection.id = null;
         this.projection.dateProjection = null;
         this.projection.prix = 0;

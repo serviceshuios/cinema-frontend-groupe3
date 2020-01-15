@@ -48,7 +48,7 @@ export class SalleComponent implements OnInit {
   }
 
   updateSalle(id: number) {
-    this.salleService.getSalle(id).subscribe(data => {
+    this.salleService.getSalleByid(id).subscribe(data => {
       this.salle = data;
       this.test = 1;
     });

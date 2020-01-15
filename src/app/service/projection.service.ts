@@ -20,8 +20,8 @@ export class ProjectionService {
     return this.httpClient.get<Projection>(this.host+'/projections/'+idFilm+"/"+idSalle);
   }
 
-     public addProjection(projection: Projection): Observable<Projection>{
-    return this.httpClient.post<Projection>(this.host+'/projections/',projection);
+  public addProjection(projection: Projection): Observable<Projection>{
+     return this.httpClient.post<Projection>(this.host+'/projections/',projection);
   }
 
      public deleteProjection(id:number): Observable<Projection>{
