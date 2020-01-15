@@ -18,6 +18,7 @@ import { AccueilComponent } from './component/accueil/accueil.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ClientComponent } from './component/client/client.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ClientComponent } from './component/client/client.component';
     SeanceComponent,
     TicketComponent,
     ProjectionfilmComponent,
-    ClientComponent
+    ClientComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

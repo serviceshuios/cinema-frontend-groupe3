@@ -11,6 +11,7 @@ import { PlaceComponent } from './component/place/place.component';
 import { TicketComponent } from './component/ticket/ticket.component';
 import { ProjectionfilmComponent } from './component/projectionfilm/projectionfilm.component';
 import { ClientComponent } from './component/client/client.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 
 // définition des routes du projet
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'place', component: PlaceComponent },
   { path: 'projectionfilm', component: ProjectionfilmComponent },
   { path: 'client', component: ClientComponent },
+  { path: 'admin', component: AdminComponent },
 
 
   // déclaration de la route par défaut
