@@ -8,18 +8,22 @@
 				<div class="panel-body">
 					<p>Mon formulaire</p>
 					<div>
-						<label>Titre film : </label><br>
-						<input [(ngModel)]="titreFilm" placeholder="Entrer le titre du film"><br>
-						<label>Nom salle : </label><br>
-						<input [(ngModel)]="nameSalle" placeholder="Entrer le nom de la salle"><br>
 						<label>Date de projection : </label><br>
 						<input [(ngModel)]="projection.dateProjection" placeholder="Entrer la date"><br>
 						<label>Prix : </label><br>
 						<input [(ngModel)]="projection.prix" placeholder="Entrer le prix"><br>
 
+						<label>Films : </label><br>
+						<select class="form-control" [(ngModel)]="projection.film">
+							<option *ngFor="let f of films" [ngValue]="f">{{f.titre}}</option>
+						</select>
 
-						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
-						
+						<label>Salles : </label><br>
+						<select class="form-control" [(ngModel)]="projection.salle">
+								<option *ngFor="let s of salles" [ngValue]="s">{{s.name}}</option>
+						</select>
+						<br>
+
 						<span *ngIf="test == 0">
 							<button (click)="saveProjection()" class="btn btn-success">Ajouter</button>
 						</span>
@@ -40,34 +44,29 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<td>ID Film</td>
-									<td>ID Salle</td>
-									<td>Date</td>
-									<td>Prix</td>
-
+									<td># ID</td>
+									<td>DATE</td>
+									<td>PRIX</td>
 									<td>MODIFICATION</td>
 									<td>SUPPRESSION</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr *ngFor="let p of projections">
-									<td> {{p.film.titre}}</td>
-									<td> {{p.salle.name}}</td>
-									<td> {{p.dateProjection | date:'MM/dd'}}</td>
+									<td> {{p.id}}</td>
+									<td> {{p.dateProjection | date:'short'}}</td>
 									<td> {{p.prix}}</td>
 
-									 <td><button class="clickable btn btn-success"
+									<td><button class="clickable btn btn-success"
 											(click)="updateProjection(p.id)">Modifier</button></td>
-											<td><button class="clickable btn btn-danger"
+									<td><button class="clickable btn btn-danger"
 											(click)="deleteProjection(p.id)">Delete</button></td>
 								</tr>
 							</tbody>
 						</table>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-

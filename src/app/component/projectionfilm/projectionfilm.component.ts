@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Projection } from 'src/app/models/projection.model'
 import { ProjectionService } from 'src/app/service/projection.service';
-import { SalleFilmId } from 'src/app/models/sallefilmid.model';
 import { Film } from 'src/app/models/film.model';
 import { Salle } from 'src/app/models/salle.model';
 import { SalleService } from 'src/app/service/salle.service';
@@ -15,10 +14,6 @@ import { FilmService } from 'src/app/service/film.service';
 })
 export class ProjectionfilmComponent implements OnInit {
 
-  titreFilm: "";
-
-  nameSalle: "";
-
   projection: Projection = {
     id: 0,
     dateProjection: null,
@@ -26,6 +21,29 @@ export class ProjectionfilmComponent implements OnInit {
     film: null,
     salle: null,
   }
+
+  film: Film = {
+
+    id: 0,
+    titre: null,
+    duree: 0,
+    description: null,
+    realisateur: null,
+    photo: null,
+    dateSortie: null,
+    categorie: null
+  }
+
+  salle: Salle = {
+
+    id: 0,
+    name: null,
+    nombrePlaces: 0
+  }
+
+  films;
+
+  salles;
 
   projections;
 
@@ -36,6 +54,8 @@ export class ProjectionfilmComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProjections();
+    this.getAllFilms();
+    this.getAllSalles();
     this.test = 0;
   }
 
@@ -47,16 +67,6 @@ export class ProjectionfilmComponent implements OnInit {
   }
 
   saveProjection() {
-    this.salleService.getSalleByName(this.nameSalle).subscribe(data =>{
-      this.projection.salle = data;
-      this.nameSalle= "";
-    })
-
-    this.filmService.getFilmbyTitre(this.titreFilm).subscribe(data => {
-      this.projection.film= data;
-      this.titreFilm= "";
-    });
-
     this.projectionService.addProjection(this.projection)
       .subscribe(data => {
         this.projection = data;
@@ -64,20 +74,39 @@ export class ProjectionfilmComponent implements OnInit {
         this.projection.dateProjection = null;
         this.projection.prix = 0;
         this.test = 0;
+        this.projection.film = new Film();
+        this.projection.salle = new Salle();
         this.getAllProjections();
+        this.getAllFilms();
+        this.getAllSalles();
       });
   }
 
-  updateProjection(idFilm: number, idSalle: number) {
-    this.projectionService.getProjection(idFilm, idSalle).subscribe(data => {
+  updateProjection(id: number) {
+    this.projectionService.getProjection(id).subscribe(data => {
       this.projection = data;
       this.test = 1;
     })
   }
 
   deleteProjection(id: number) {
-    this.projectionService.deleteProjection(id).subscribe(data => this.getAllProjections());
+    this.projectionService.deleteProjection(id).subscribe(data =>
+    this.getAllProjections());
     this.test = 0;
   }
+
+  getAllFilms() {
+      this.filmService.getAllFilms()
+      .subscribe (data => {
+        this.films = data;
+      });
+  } // getAll
+
+  getAllSalles() {
+      this.salleService.getAllSalles()
+      .subscribe (data => {
+        this.salles = data;
+      });
+  } // getAll
 
 }

@@ -12,23 +12,20 @@ export class ProjectionService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getAllProjections(): Observable<Projection>{
-   return this.httpClient.get<Projection>(this.host+"/projections/")
+  public getAllProjections(): Observable<Projection> {
+   return this.httpClient.get<Projection>(this.host + '/projections/')
   }
 
-   public getProjection(idFilm: number, idSalle: number): Observable<Projection>{
-    return this.httpClient.get<Projection>(this.host+'/projections/'+idFilm+"/"+idSalle);
-  }
+  public getProjection(id: number): Observable<Projection> {
+    return this.httpClient.get<Projection>(this.host + '/projections/' + id);
+  } // fin getById
 
-  public addProjection(projection: Projection): Observable<Projection>{
-     return this.httpClient.post<Projection>(this.host+'/projections/',projection);
-  }
+  public addProjection(projection: Projection) {
+     return this.httpClient.post<Projection>(this.host + '/projections/', projection);
+  } // fin add
 
-     public deleteProjection(id:number): Observable<Projection>{
-    return this.httpClient.delete<Projection>(this.host+'/projections/'+id);
-  }
-
-     public updateProjection(id:number, projection: Projection): Observable<Projection>{
-    return this.httpClient.put<Projection>(this.host+'/projections/'+id,projection);
-  }
+  public deleteProjection(id: number) {
+    return this.httpClient.delete<Projection>(this.host + '/categories/' + id);
+  }// fin delete
 }
+
