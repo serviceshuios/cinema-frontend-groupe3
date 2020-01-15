@@ -70,7 +70,7 @@ export class ProjectionfilmComponent implements OnInit {
     this.projectionService.addProjection(this.projection)
       .subscribe(data => {
         this.projection = data;
-        this.projection.id = null;
+        this.projection.id = 0;
         this.projection.dateProjection = null;
         this.projection.prix = 0;
         this.test = 0;
