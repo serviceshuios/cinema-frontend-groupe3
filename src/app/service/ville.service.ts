@@ -34,7 +34,7 @@ public host = "http://localhost:8082";
     return this.httpClient.put<Ville>(this.host+'/villes/'+id,ville);
   }
 
-  public chercherCinemasVille(id:number): Observable<Array<Cinema>>{
-    return this.httpClient.get<Array<Cinema>>(this.host+'/villes/'+id+"/cinemas");
+  public chercherCinemasVille(nameVille: string): Observable<Array<Cinema>>{
+    return this.httpClient.get<Array<Cinema>>(this.host+'/villes/'+nameVille+"/cinemas");
   }
 }
