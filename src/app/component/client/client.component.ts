@@ -14,7 +14,7 @@ export class ClientComponent implements OnInit {
   ngOnInit() {
   }
 
-  chercherCinemas(nomVille: String){
+  chercherCinemas(nomVille: string) {
     this.villeService.chercherCinemasVille(nomVille).subscribe(data =>{
 
     })
