@@ -38,6 +38,11 @@
 						<select class="form-control" [(ngModel)]="projection.salle">
 								<option *ngFor="let s of salles" [ngValue]="s">{{s.name}}</option>
 						</select>
+
+						<label>Seances : </label><br>
+						<select class="form-control" [(ngModel)]="projection.seance">
+								<option *ngFor="let s of seances" [ngValue]="s">{{s.heureDebut | date:'short'}}</option>
+						</select>
 						<br>
 
 						<span *ngIf="test == 0">
@@ -72,7 +77,6 @@
 									<td> {{p.id}}</td>
 									<td> {{p.dateProjection | date:'short'}}</td>
 									<td> {{p.prix}}</td>
-
 									<td><button class="clickable btn btn-success"
 											(click)="updateProjection(p.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"

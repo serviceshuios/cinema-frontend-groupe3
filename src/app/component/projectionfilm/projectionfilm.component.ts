@@ -7,6 +7,8 @@ import { Salle } from 'src/app/models/salle.model';
 import { SalleService } from 'src/app/service/salle.service';
 import { FilmService } from 'src/app/service/film.service';
 import { Categorie } from 'src/app/models/categorie.model';
+import { Seance } from 'src/app/models/seance.model';
+import { SeanceService } from 'src/app/service/seance.service';
 
 @Component({
   selector: 'app-projectionfilm',
@@ -21,23 +23,28 @@ export class ProjectionfilmComponent implements OnInit {
     prix: 0,
     film: new Film(),
     salle: new Salle(),
+    seance: new Seance()
   }
 
   films;
 
   salles;
 
+  seances;
+
   projections;
 
   // Variable de test
   test = 0;
 
-  constructor(private projectionService: ProjectionService, private salleService: SalleService,private filmService: FilmService) { }
+  constructor(private projectionService: ProjectionService, private salleService: SalleService,
+      private filmService: FilmService, private seanceService: SeanceService) { }
 
   ngOnInit() {
     this.getAllProjections();
     this.getAllFilms();
     this.getAllSalles();
+    this.getAllSeances();
     this.test = 0;
   }
 
@@ -61,6 +68,7 @@ export class ProjectionfilmComponent implements OnInit {
         this.getAllProjections();
         this.getAllFilms();
         this.getAllSalles();
+        this.getAllSeances();
       });
   }
 
@@ -88,6 +96,13 @@ export class ProjectionfilmComponent implements OnInit {
       this.salleService.getAllSalles()
       .subscribe (data => {
         this.salles = data;
+      });
+  } // getAll
+
+  getAllSeances() {
+      this.seanceService.getAllSeances()
+      .subscribe (data => {
+        this.seances = data;
       });
   } // getAll
 
