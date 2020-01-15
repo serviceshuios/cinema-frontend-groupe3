@@ -1,46 +1,47 @@
 <div class="container">
-  <h2>Bienvenue chers Client</h2>
-  <div class="row">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Bienvenue chers Client</h2>
+			<div class="row">
 
-    <div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4>Veuillez indiquez votre ville</h4>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4>Veuillez indiquez votre ville</h4>
+					</div>
+					<div class="panel-body">
+						<input [(ngModel)]="nomVille" type="text" id="input" class="form-control" mdbInput>
+						<br>
+						<button class="btn btn-primary" (click)="chercherCinemas(nomVille)">Valider</button>
+					</div>
 				</div>
-				<div class="panel-body">
-          <input [(ngModel)]="nomVille" type="text" id="input" class="form-control" mdbInput>
-          <button class="btn btn-primary" (click)="chercherCinemas(nomVille)">Valider</button>
-        </div>
-        <div class="panel panel-danger">
-
-				<div class="panel-heading">
-					<h4>Lister les cinemas</h4>
-				</div>
-				<div class="panel-body">
-					<div *ngIf="cinemas.length>0">
-						<table class="table table-striped">
-							<tr>
-								<td>ID</td>
-								<td>name</td>
-								<td>longitude</td>
-                <td>latitude</td>
-                <td>altitude</td>
-
-							</tr>
-							<tr *ngFor="let c of cinemas">
-								<td>{{c.id}}</td>
-								<td>{{c.name}}</td>
-								<td>{{c.longitude}}</td>
-								<td>{{c.latitude}}</td>
-								<td>{{c.altitude}}</td>
-
-								<!-- <td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h4>Lister les cinemas</h4>
+							</div>
+							<div class="panel-body">
+								<div *ngIf="cinemas.length>0">
+									<table class="table table-striped">
+										<tr>
+											<td>ID</td>
+											<td>name</td>
+											<td>selectionner</td>
+										</tr>
+										<tr *ngFor="let c of cinemas">
+											<td>{{c.id}}</td>
+											<td>{{c.name}}</td>
+											<td><a class="btn btn-primary">Choisir</a></td>
+											<!-- <td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
 								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td> -->
-							</tr>
-						</table>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
-      </div>
-  </div>
+		</div>
+	</div>
 </div>
