@@ -1,75 +1,82 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<br>
-			<button routerLink="/accueil" class="btn btn-primary">Accueil</button>
-			<button routerLink="/cinema" class="btn btn-primary espace">Cinema</button>
-			<button routerLink="/ville" class="btn btn-primary espace">Ville</button>
-			<button routerLink="/salle" class="btn btn-primary espace">Salle</button>
-			<button routerLink="/place" class="btn btn-primary espace">Place</button>
-			<button routerLink="/categorie" class="btn btn-primary espace">Categorie</button>
-			<button routerLink="/film" class="btn btn-primary espace">Film</button>
-			<button routerLink="/projectionfilm" class="btn btn-primary espace">ProjectionFilm</button>
-			<button routerLink="/seance" class="btn btn-primary espace">Seance</button>
-			<button routerLink="/ticket" class="btn btn-primary espace">Ticket</button>
-			<hr>
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li><a href="/cinema">Cinema</a></li>
+				<li><a href="/ville">Ville</a></li>
+				<li><a href="/salle">Salle</a></li>
+				<li><a href="/place">Place</a></li>
+
+				<li><a href="/categorie">Categorie</a></li>
+				<li><a href="/film">Film</a></li>
+				<li><a href="/projectionfilm">Projection Film</a></li>
+				<li><a href="/seance">Seance</a></li>
+				<li><a href="/ticket">Ticket</a></li>
+			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br><br>
+	<h1 class="page-header">Dashboard</h1>
 	<div class="row">
 		<div class="col-md-4">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h4>Ajout d'une projection</h4>
+					<h4>Ajouter une Projection</h4>
 				</div>
 				<div class="panel-body">
-					<p>Mon formulaire</p>
-					<div>
-						<label>Date de projection : </label><br>
-						<input [(ngModel)]="projection.dateProjection" placeholder="Entrer la date"><br>
-						<label>Prix : </label><br>
-						<input [(ngModel)]="projection.prix" placeholder="Entrer le prix"><br>
 
-						<label>Films : </label><br>
-						<select class="form-control" [(ngModel)]="projection.film">
-							<option *ngFor="let f of films" [ngValue]="f">{{f.titre}}</option>
-						</select>
+					<label>Date de projection : </label><br>
+					<input [(ngModel)]="projection.dateProjection" class="form-control"
+						placeholder="Entrer la date"><br>
+					<label>Prix : </label><br>
+					<input [(ngModel)]="projection.prix" class="form-control" placeholder="Entrer le prix"><br>
 
-						<label>Salles : </label><br>
-						<select class="form-control" [(ngModel)]="projection.salle">
-								<option *ngFor="let s of salles" [ngValue]="s">{{s.name}}</option>
-						</select>
+					<label>Choix du film : </label><br>
+					<select class="form-control" [(ngModel)]="projection.film">
+						<option *ngFor="let f of films" [ngValue]="f">{{f.titre}}</option>
+					</select><br>
 
-						<label>Seances : </label><br>
-						<select class="form-control" [(ngModel)]="projection.seance">
-								<option *ngFor="let s of seances" [ngValue]="s">{{s.heureDebut | date:'short'}}</option>
-						</select>
-						<br>
+					<label>Choix de la salle : </label><br>
+					<select class="form-control" [(ngModel)]="projection.salle">
+						<option *ngFor="let s of salles" [ngValue]="s">{{s.name}}</option>
+					</select><br>
 
-						<span *ngIf="test == 0">
-							<button (click)="saveProjection()" class="btn btn-success">Ajouter</button>
-						</span>
-						<span *ngIf="test == 1">
-							<button (click)="saveProjection()" class="btn btn-warning">Modifier</button>
-						</span>
-					</div>
+					<label>Choix de la seance : </label><br>
+					<select class="form-control" [(ngModel)]="projection.seance">
+						<option *ngFor="let s of seances" [ngValue]="s">{{s.heureDebut | date:'short'}}</option>
+					</select><br>
+
+					<span *ngIf="test == 0">
+						<button (click)="saveProjection()" class="btn btn-success">Ajouter</button>
+					</span>
+					<span *ngIf="test == 1">
+						<button (click)="saveProjection()" class="btn btn-warning">Modifier</button>
+					</span>
+
 				</div>
 			</div>
 		</div>
 		<div class="col-md-8">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<h4>Liste des projections</h4>
+					<h4>Liste des Projections</h4>
 				</div>
 				<div class="panel-body">
 					<div *ngIf="projections.length>0">
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<td># ID</td>
-									<td>DATE</td>
-									<td>PRIX</td>
-									<td>MODIFICATION</td>
-									<td>SUPPRESSION</td>
+									<td>#Id</td>
+									<td>Date</td>
+									<td>Prix</td>
+									<td>Modification</td>
+									<td>Suppression</td>
 								</tr>
 							</thead>
 							<tbody>
@@ -80,7 +87,7 @@
 									<td><button class="clickable btn btn-success"
 											(click)="updateProjection(p.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
-											(click)="deleteProjection(p.id)">Delete</button></td>
+											(click)="deleteProjection(p.id)">Supprimer</button></td>
 								</tr>
 							</tbody>
 						</table>

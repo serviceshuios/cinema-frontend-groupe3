@@ -1,36 +1,44 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<br>
-			<button routerLink="/accueil" class="btn btn-primary">Accueil</button>
-			<button routerLink="/cinema" class="btn btn-primary espace">Cinema</button>
-			<button routerLink="/ville" class="btn btn-primary espace">Ville</button>
-			<button routerLink="/salle" class="btn btn-primary espace">Salle</button>
-			<button routerLink="/place" class="btn btn-primary espace">Place</button>
-			<button routerLink="/categorie" class="btn btn-primary espace">Categorie</button>
-			<button routerLink="/film" class="btn btn-primary espace">Film</button>
-			<button routerLink="/projectionfilm" class="btn btn-primary espace">ProjectionFilm</button>
-			<button routerLink="/seance" class="btn btn-primary espace">Seance</button>
-			<button routerLink="/ticket" class="btn btn-primary espace">Ticket</button>
-			<hr>
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li><a href="/cinema">Cinema</a></li>
+				<li><a href="/ville">Ville</a></li>
+				<li><a href="/salle">Salle</a></li>
+				<li><a href="/place">Place</a></li>
+
+				<li><a href="/categorie">Categorie</a></li>
+				<li><a href="/film">Film</a></li>
+				<li><a href="/projectionFilm">Projection Film</a></li>
+				<li><a href="/seance">Seance</a></li>
+				<li><a href="/ticket">Ticket</a></li>
+			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br><br>
+	<h1 class="page-header">Dashboard</h1>
 	<div class="row">
 		<div class="col-md-4">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h4>Ajout d'une Salle</h4>
+					<h4>Ajouter une Salle</h4>
 				</div>
 				<div class="panel-body">
-					<p>Mon formulaire</p>
 					<div>
 						<label>Nom: </label><br>
-						<input [(ngModel)]="salle.name" placeholder="Entrer un nom"><br>
+						<input [(ngModel)]="salle.name" class="form-control" placeholder="Entrer un nom"><br>
 						<label>Nombre de Places: </label><br>
-						<input [(ngModel)]="salle.nombrePlaces" placeholder="Entrer un Nombre de Place"><br><br>
+						<input [(ngModel)]="salle.nombrePlaces" class="form-control"
+							placeholder="Entrer un Nombre de Place"><br><br>
 
 						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
-						
+
 						<span *ngIf="test == 0">
 							<button (click)="saveSalle()" class="btn btn-success">Ajouter</button>
 						</span>
@@ -51,11 +59,11 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<td>#ID</td>
-									<td>NOM</td>
-									<td>NOMBRE PLACES</td>
-									<td>MODIFICATION</td>
-									<td>SUPPRESSION</td>
+									<td>#Id</td>
+									<td>Nom</td>
+									<td>NombrePlaces</td>
+									<td>Modification</td>
+									<td>Suppression</td>
 								</tr>
 							</thead>
 							<tbody>
@@ -66,11 +74,12 @@
 									<td><button class="clickable btn btn-success"
 											(click)="updateSalle(s.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
-											(click)="deleteSalle(s.id)">Delete</button></td>
+											(click)="deleteSalle(s.id)">Supprimer</button>
+									</td>
 								</tr>
 							</tbody>
 						</table>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,61 +1,66 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-		<div class="col-md-12">
-			<br>
-			<button routerLink="/accueil" class="btn btn-primary">Accueil</button>
-			<button routerLink="/cinema" class="btn btn-primary espace">Cinema</button>
-			<button routerLink="/ville" class="btn btn-primary espace">Ville</button>
-			<button routerLink="/salle" class="btn btn-primary espace">Salle</button>
-			<button routerLink="/place" class="btn btn-primary espace">Place</button>
-			<button routerLink="/categorie" class="btn btn-primary espace">Categorie</button>
-			<button routerLink="/film" class="btn btn-primary espace">Film</button>
-			<button routerLink="/projectionfilm" class="btn btn-primary espace">ProjectionFilm</button>
-			<button routerLink="/seance" class="btn btn-primary espace">Seance</button>
-			<button routerLink="/ticket" class="btn btn-primary espace">Ticket</button>
-			<hr>
-		</div>
-	</div>
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/cinema">Cinema</a></li>
+        <li><a href="/ville">Ville</a></li>
+        <li><a href="/salle">Salle</a></li>
+        <li><a href="/place">Place</a></li>
+
+        <li><a href="/categorie">Categorie</a></li>
+        <li><a href="/film">Film</a></li>
+        <li><a href="/projectionfilm">Projection Film</a></li>
+        <li><a href="/seance">Seance</a></li>
+        <li><a href="/ticket">Ticket</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <br><br><br>
+  <h1 class="page-header">Dashboard</h1>
   <div class="row">
     <div class="col-md-4">
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h4>Ajout d'un Ticket</h4>
+          <h4>Ajouter un Ticket</h4>
         </div>
         <div class="panel-body">
-          <p>Mon formulaire</p>
-          <div>
-            <label>NomClient: </label><br>
-            <input [(ngModel)]="ticket.nomClient" placeholder="Entrer un nom"><br>
-            <label>Prix: </label><br>
-            <input [(ngModel)]="ticket.prix" placeholder="Entrer un prix"><br>
-            <label>CodePayement: </label><br>
-            <input [(ngModel)]="ticket.codePayement" placeholder="Entrer un code de Payement"><br>
-            <label>Reservee: </label><br>
-            <!-- <input [(ngModel)]="ticket.reservee" placeholder="Est-ce reservee ? True ou False"><br> -->
-            <div class="form-check">
-              <input [(ngModel)]="ticket.reservee" class="form-check-input" type="radio" name="True" id="True"
-                value="True" checked>
-              <label class="form-check-label" for="True">
-                Oui
-              </label>
-            </div>
-            <div class="form-check">
-              <input [(ngModel)]="ticket.reservee" class="form-check-input" type="radio" name="False" id="False"
-                value="False">
-              <label class="form-check-label" for="False">
-                Non
-              </label>
-            </div>
-
-            <select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
-
-            <span *ngIf="test == 0">
-              <button (click)="saveTicket()" class="btn btn-success">Ajouter</button>
-            </span>
-            <span *ngIf="test == 1">
-              <button (click)="saveTicket()" class="btn btn-warning">Modifier</button>
-            </span>
+          <label>NomClient: </label><br>
+          <input [(ngModel)]="ticket.nomClient" class="form-control" placeholder="Entrer un nom"><br>
+          <label>Prix: </label><br>
+          <input [(ngModel)]="ticket.prix" class="form-control" placeholder="Entrer un prix"><br>
+          <label>CodePayement: </label><br>
+          <input [(ngModel)]="ticket.codePayement" class="form-control" placeholder="Entrer un code de Payement"><br>
+          <label>Reservee: </label><br>
+          <!-- <input [(ngModel)]="ticket.reservee" placeholder="Est-ce reservee ? True ou False"><br> -->
+          <div class="form-check col-md-4">
+            <input [(ngModel)]="ticket.reservee" class="form-check-input" type="radio" name="True" id="True"
+              value="True" checked>
+            <label class="form-check-label" for="True">
+              Oui
+            </label>
           </div>
+          <div class="form-check col-md-4">
+            <input [(ngModel)]="ticket.reservee" class="form-check-input" type="radio" name="False" id="False"
+              value="False">
+            <label class="form-check-label" for="False">
+              Non
+            </label>
+          </div><br><br>
+
+          <select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+
+          <span *ngIf="test == 0">
+            <button (click)="saveTicket()" class="btn btn-success">Ajouter</button>
+          </span>
+          <span *ngIf="test == 1">
+            <button (click)="saveTicket()" class="btn btn-warning">Modifier</button>
+          </span>
         </div>
       </div>
     </div>
@@ -69,13 +74,13 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <td>#ID</td>
-                  <td>NOMCLIENT</td>
-                  <td>PRIX</td>
-                  <td>CODE PAYEMENT</td>
-                  <td>RESERVEE</td>
-                  <td>MODIFICATION</td>
-                  <td>SUPPRESSION</td>
+                  <td>#Id</td>
+                  <td>NomClient</td>
+                  <td>Prix</td>
+                  <td>Code de Paiement</td>
+                  <td>Reserver</td>
+                  <td>Modification</td>
+                  <td>Suppression</td>
                 </tr>
               </thead>
               <tbody>
@@ -86,7 +91,7 @@
                   <td> {{t.codePayement}}</td>
                   <td> {{t.reservee}}</td>
                   <td><button class="clickable btn btn-success" (click)="detailTicket(t.id)">Modifier</button></td>
-                  <td><button class="clickable btn btn-danger" (click)="deleteTicket(t.id)">Delete</button></td>
+                  <td><button class="clickable btn btn-danger" (click)="deleteTicket(t.id)">Supprimer</button></td>
                 </tr>
               </tbody>
             </table>

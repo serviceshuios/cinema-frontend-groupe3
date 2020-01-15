@@ -1,67 +1,81 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<br>
-			<button routerLink="/accueil" class="btn btn-primary">Accueil</button>
-			<button routerLink="/cinema" class="btn btn-primary espace">Cinema</button>
-			<button routerLink="/ville" class="btn btn-primary espace">Ville</button>
-			<button routerLink="/salle" class="btn btn-primary espace">Salle</button>
-			<button routerLink="/place" class="btn btn-primary espace">Place</button>
-			<button routerLink="/categorie" class="btn btn-primary espace">Categorie</button>
-			<button routerLink="/film" class="btn btn-primary espace">Film</button>
-			<button routerLink="/projectionfilm" class="btn btn-primary espace">ProjectionFilm</button>
-			<button routerLink="/seance" class="btn btn-primary espace">Seance</button>
-			<button routerLink="/ticket" class="btn btn-primary espace">Ticket</button>
-			<hr>
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li><a href="/cinema">Cinema</a></li>
+				<li><a href="/ville">Ville</a></li>
+				<li><a href="/salle">Salle</a></li>
+				<li><a href="/place">Place</a></li>
+
+				<li><a href="/categorie">Categorie</a></li>
+				<li><a href="/film">Film</a></li>
+				<li><a href="/projectionfilm">Projection Film</a></li>
+				<li><a href="/seance">Seance</a></li>
+				<li><a href="/ticket">Ticket</a></li>
+			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br><br>
+	<h1 class="page-header">Dashboard</h1>
 	<div class="row">
-		<div class="col-md-6">
-			<div class="panel panel-primary">
+		<div class="col-md-4">
+			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h4>Ajouter une place</h4>
+					<h4>Ajouter une Place</h4>
 				</div>
 				<div class="panel-body">
 					<!-- formulaire de saisie de commentaire -->
 					<div>
-						
-						<input [(ngModel)]="place.numero" placeholder="numero"><br>
-						<input [(ngModel)]="place.longitude" placeholder="longitude"><br>
-						<input [(ngModel)]="place.latitude" placeholder="latitude"><br>
-						<input [(ngModel)]="place.altitude" placeholder="altitude"><br>
-						
+						<label>Numero: </label><br>
+						<input [(ngModel)]="place.numero" class="form-control" placeholder="numero"><br>
+						<label>Longitude: </label><br>
+						<input [(ngModel)]="place.longitude" class="form-control" placeholder="longitude"><br>
+						<label>Latitude: </label><br>
+						<input [(ngModel)]="place.latitude" class="form-control" placeholder="latitude"><br>
+						<label>Altitude: </label><br>
+						<input [(ngModel)]="place.altitude" class="form-control" placeholder="altitude"><br>
 
-						<button (click)="savePlace()" class="btn bg-primary espace">
-							Ajouter
-						</button>
+						<span *ngIf="test == 0">
+							<button (click)="savePlace()" class="btn btn-success">Ajouter</button>
+						</span>
+						<span *ngIf="test == 1">
+							<button (click)="savePlace()" class="btn btn-warning">Modifier</button>
+						</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-8">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<h4>Lister les places</h4>
+					<h4>Liste des Places</h4>
 				</div>
 				<div class="panel-body">
 					<div *ngIf="places.length>0">
 						<table class="table table-striped">
 							<tr>
-								<td>ID</td>
-								<td>numero</td>
-								<td>longitude</td>
-								<td>latitude</td>
-								<td>altitude</td>
+								<td>#Id</td>
+								<td>Numero</td>
+								<td>Longitude</td>
+								<td>Latitude</td>
+								<td>Altitude</td>
+								<td>Modification</td>
+								<td>Suppression</td>
 							</tr>
 							<tr *ngFor="let p of places">
-								<td> {{p.id}}</td>
-								<td> {{p.numero}}</td>
-								<td> {{p.longitude}}</td>
-								<td> {{p.latitude}}</td>
-								<td> {{p.altitude}}</td>
-
-								<button class="btn btn-primary" (click)="updatePlace(p.id)">Modifier</button>
-								<button class="btn btn-danger" (click)="deletePlace(p.id)">Delete</button>
+								<td>{{p.id}}</td>
+								<td>{{p.numero}}</td>
+								<td>{{p.longitude}}</td>
+								<td>{{p.latitude}}</td>
+								<td>{{p.altitude}}</td>
+								<td><button class="btn btn-success" (click)="updatePlace(p.id)">Modifier</button></td>
+								<td><button class="btn btn-danger" (click)="deletePlace(p.id)">Supprimer</button></td>
 							</tr>
 						</table>
 					</div>

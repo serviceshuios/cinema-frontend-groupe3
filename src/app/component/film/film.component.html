@@ -1,66 +1,72 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<br>
-			<button routerLink="/accueil" class="btn btn-primary">Accueil</button>
-			<button routerLink="/cinema" class="btn btn-primary espace">Cinema</button>
-			<button routerLink="/ville" class="btn btn-primary espace">Ville</button>
-			<button routerLink="/salle" class="btn btn-primary espace">Salle</button>
-			<button routerLink="/place" class="btn btn-primary espace">Place</button>
-			<button routerLink="/categorie" class="btn btn-primary espace">Categorie</button>
-			<button routerLink="/film" class="btn btn-primary espace">Film</button>
-			<button routerLink="/projectionfilm" class="btn btn-primary espace">ProjectionFilm</button>
-			<button routerLink="/seance" class="btn btn-primary espace">Seance</button>
-			<button routerLink="/ticket" class="btn btn-primary espace">Ticket</button>
-			<hr>
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li><a href="/cinema">Cinema</a></li>
+				<li><a href="/ville">Ville</a></li>
+				<li><a href="/salle">Salle</a></li>
+				<li><a href="/place">Place</a></li>
+
+				<li><a href="/categorie">Categorie</a></li>
+				<li><a href="/film">Film</a></li>
+				<li><a href="/projectionfilm">Projection Film</a></li>
+				<li><a href="/seance">Seance</a></li>
+				<li><a href="/ticket">Ticket</a></li>
+			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br><br>
+	<h1 class="page-header">Dashboard</h1>
 	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
+		<div class="col-md-4">
+			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h4>Ajouter Un Film</h4>
+					<h4>Ajouter un Film</h4>
 				</div>
 				<div class="panel-body">
 					<!-- formulaire de saisie de commentaire -->
 					<div>
-						<br>
-						<div class="col-md-12">
-							<input [(ngModel)]="film.titre" class="form-control"> Titre<br><br>
-							<input [(ngModel)]="film.duree" class="form-control"> Duree <br><br>
-							<input [(ngModel)]="film.realisateur" class="form-control"> Realisateur <br><br>
-							<input [(ngModel)]="film.description" class="form-control"> description <br><br>
-							<input [(ngModel)]="film.photo" class="form-control"> photo <br><br>
-
-							<input [(ngModel)]="film.dateSortie" type="date" id="input" class="form-control" mdbInput>
-							Date <br><br>
-
-
-							<select class="form-control" [(ngModel)]="film.categorie">
-								<option *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
-							</select>
-							<!-- <ng-select [items]="categories" bindLabel="name" placeholder="Choisir une categorie"
+						<label>Titre: </label><br>
+						<input [(ngModel)]="film.titre" class="form-control" placeholder="Entrer un titre"><br>
+						<label>Duree: </label><br>
+						<input [(ngModel)]="film.duree" class="form-control"><br>
+						<label>Realisateur: </label><br>
+						<input [(ngModel)]="film.realisateur" class="form-control" placeholder="Entrer un realisateur"><br>
+						<label>Description: </label><br>
+						<input [(ngModel)]="film.description" class="form-control" placeholder="Entrer une description"><br>
+						<label>Photo: </label><br>
+						<input [(ngModel)]="film.photo" class="form-control" placeholder="Entrer une photo"><br>
+						<label>Date: </label><br>
+						<input [(ngModel)]="film.dateSortie" type="date" id="input" class="form-control" mdbInput><br>
+						<label>Choix de categorie: </label><br>
+						<select class="form-control" [(ngModel)]="film.categorie">
+							<option *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
+						</select><br>
+						<!-- <ng-select [items]="categories" bindLabel="name" placeholder="Choisir une categorie"
 								[(ngModel)]="film.categorie">
 							</ng-select> -->
 
-							<!-- <input [(ngModel)]="film.dateSortie"> Date de Sortie <br><br> -->
+						<span *ngIf="test == 0">
+							<button (click)="saveFilm()" class="btn btn-success">Ajouter</button>
+						</span>
+						<span *ngIf="test == 1">
+							<button (click)="saveFilm()" class="btn btn-warning">Modifier</button>
+						</span>
 
-							<span *ngIf="test == 0">
-								<button (click)="saveFilm()" class="btn btn-success">Ajouter</button>
-							</span>
-							<span *ngIf="test == 1">
-								<button (click)="saveFilm()" class="btn btn-warning">Modifier</button>
-							</span>
-
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-8">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<h4>Lister les Films</h4>
+					<h4>Liste des Films</h4>
 				</div>
 				<div class="panel-body">
 					<div *ngIf="films.length>0">
@@ -72,8 +78,8 @@
 								<td>realisateur</td>
 								<td>description</td>
 								<td>dateSortie</td>
-								<td>Modifier</td>
-								<td>Supprimer</td>
+								<td>Modification</td>
+								<td>Suppression</td>
 							</tr>
 							<tr *ngFor="let f of films">
 								<td> {{f.id}}</td>
@@ -82,38 +88,33 @@
 								<td>{{f.realisateur}}</td>
 								<td>{{f.description}}</td>
 								<td>{{f.dateSortie | date:'M/d/yy'}}</td>
-								<td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
-								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td>
+								<td><a class="btn btn-success" (click)="detailFilm(f.id)">Modifier</a></td>
+								<td><button class="btn btn-danger" (click)="deleteFilm(f.id)">Supprimer</button></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
+		<div *ngFor="let f of films">
+			<div class="col-md-4">
+				<div class="panel panel-info">
+					<div class="panel-heading tailleimage">
+						{{f.titre}}<br />
+					</div>
+					<div class="panel-body">
+						Photo: {{f.photo}}
+						<!-- <img src="{{p.previewURL}}" /> <br /> -->
+					</div>
+					<div class="panel-footer">
+						{{f.description}} <span class="glyphicon glyphicon-heart"></span> <br>
+						<a class="btn btn-success" (click)="detailFilm(f.id)">Modifier</a>
+						<button class="btn btn-danger espace" (click)="deleteFilm(f.id)">Supprimer</button>
+					</div>
 
-	<div *ngFor="let f of films">
-		<div class="col-md-3">
-			<div class="panel panel-primary">
-				<div class="panel-heading tailleimage">
-					{{f.titre}}<br />
 				</div>
-				<div class="panel-body">
-					photo {{f.photo}}
-					<!-- <img src="{{p.previewURL}}" /> <br /> -->
-				</div>
-				<div class="panel-footer">
-					{{f.description}} <span class="glyphicon glyphicon-heart"></span> <br>
-					<a class="btn btn-success" (click)="detailFilm(f.id)">Detail</a>
-					<button class="btn btn-danger" (click)="deleteFilm(f.id)">Delete</button>
-				</div>
-
 			</div>
 		</div>
 	</div>
-
-
-
-
 </div>

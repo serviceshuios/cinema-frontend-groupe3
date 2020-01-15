@@ -15,20 +15,24 @@ export class PlaceComponent implements OnInit {
     longitude: 0,
     latitude: 0,
     altitude: 0
-
   }
 
+  test;
+  
   places;
 
   constructor(private placeService: PlaceService) { }
 
   ngOnInit() {
+    this.getAllPlaces();
+    this.test = 0;
   }
 
   
   public getAllPlaces(){
     this.placeService.getAllPlaces().subscribe( data => {
       this.places = data;
+      this.test = 0;
     })
   }
 
@@ -42,16 +46,19 @@ export class PlaceComponent implements OnInit {
         this.place.latitude = 0;
         this.place.altitude = 0;
         this.getAllPlaces();
+        this.test = 0;
       });
   }
 
   updatePlace(id: number) {
     this.placeService.getPlace(id).subscribe(data => {
       this.place = data;
+      this.test = 1;
     })
   }
 
   deletePlace(id: number) {
     this.placeService.deletePlace(id).subscribe(data => this.getAllPlaces());
+    this.test = 0;
   }
 }

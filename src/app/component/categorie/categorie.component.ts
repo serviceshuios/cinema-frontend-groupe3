@@ -15,6 +15,8 @@ export class CategorieComponent implements OnInit {
     name: ''
   }
 
+  test;
+
   // liste des categories
   categories;
 
@@ -22,6 +24,7 @@ export class CategorieComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCategories();
+    this.test = 0;
   }
 
   saveCategorie() {
@@ -31,6 +34,7 @@ export class CategorieComponent implements OnInit {
       this.categorie.id = 0;
       this.categorie.name = '';
       this.getAllCategories();
+      this.test = 0;
     })
   } // fin save 
 
@@ -38,6 +42,7 @@ export class CategorieComponent implements OnInit {
       this.categorieService.getAllCategories()
       .subscribe (data => {
         this.categories = data
+        this.test = 0;
       })
     } // getAll 
 
@@ -45,13 +50,15 @@ export class CategorieComponent implements OnInit {
       this.categorieService.getCategorie(id)
       .subscribe (data => {
         this.categorie = data;
+        this.test = 1;
       })
     } // fin detail
 
-    deleteCategorie (id: number) {
+    deleteCategorie(id: number) {
       this.categorieService.deleteCategorie(id)
       .subscribe (data =>{
         this.getAllCategories();
+        this.test = 0;
       })
     } // fin delete
 

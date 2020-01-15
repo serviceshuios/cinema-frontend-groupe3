@@ -1,43 +1,51 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<br>
-			<button routerLink="/accueil" class="btn btn-primary">Accueil</button>
-			<button routerLink="/cinema" class="btn btn-primary espace">Cinema</button>
-			<button routerLink="/ville" class="btn btn-primary espace">Ville</button>
-			<button routerLink="/salle" class="btn btn-primary espace">Salle</button>
-			<button routerLink="/place" class="btn btn-primary espace">Place</button>
-			<button routerLink="/categorie" class="btn btn-primary espace">Categorie</button>
-			<button routerLink="/film" class="btn btn-primary espace">Film</button>
-			<button routerLink="/projectionfilm" class="btn btn-primary espace">ProjectionFilm</button>
-			<button routerLink="/seance" class="btn btn-primary espace">Seance</button>
-			<button routerLink="/ticket" class="btn btn-primary espace">Ticket</button>
-			<hr>
-		</div>
-	</div>
-	<div class="row">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/cinema">Cinema</a></li>
+        <li><a href="/ville">Ville</a></li>
+        <li><a href="/salle">Salle</a></li>
+        <li><a href="/place">Place</a></li>
+
+        <li><a href="/categorie">Categorie</a></li>
+        <li><a href="/film">Film</a></li>
+        <li><a href="/projectionfilm">Projection Film</a></li>
+        <li><a href="/seance">Seance</a></li>
+        <li><a href="/ticket">Ticket</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <br><br><br>
+  <h1 class="page-header">Dashboard</h1>
+  <div class="row">
 		<div class="col-md-4">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h4>Ajout d'un Cinema</h4>
+					<h4>Ajouter un Cinema</h4>
 				</div>
 				<div class="panel-body">
-					<p>Mon formulaire</p>
 					<div>
 						<label>Nom: </label><br>
-						<input [(ngModel)]="cinema.name" placeholder="Entrer un nom"><br>
+						<input [(ngModel)]="cinema.name" class="form-control" placeholder="Entrer un nom"><br>
 						<label>Longitude: </label><br>
-						<input [(ngModel)]="cinema.longitude" placeholder="Entrer une Longitude"><br>
+						<input [(ngModel)]="cinema.longitude" class="form-control" placeholder="Entrer une Longitude"><br>
 						<label>Latitude: </label><br>
-						<input [(ngModel)]="cinema.latitude" placeholder="Entrer une Latitude"><br>
+						<input [(ngModel)]="cinema.latitude" class="form-control" placeholder="Entrer une Latitude"><br>
 						<label>Altitude: </label><br>
-						<input [(ngModel)]="cinema.altitude" placeholder="Entrer un Altitude"><br>
+						<input [(ngModel)]="cinema.altitude" class="form-control" placeholder="Entrer un Altitude"><br>
 						<label>Nombre de Salles: </label><br>
-						<input [(ngModel)]="cinema.nombreSalles" placeholder="Entrer un Nombre de Salle"><br><br>
-
+						<input [(ngModel)]="cinema.nombreSalles" class="form-control" placeholder="Entrer un Nombre de Salle"><br>
+						<label>Choix de la ville: </label><br>
 						<select class="form-control" [(ngModel)]="cinema.ville">
 							<option *ngFor="let v of villes" [ngValue]="v">{{v.name}}</option>
 						</select>
+						<br>
 
 						<span *ngIf="test == 0">
 							<button (click)="saveCinema()" class="btn btn-success">Ajouter</button>
@@ -52,39 +60,35 @@
 		<div class="col-md-8">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<h4>Liste des Cinema</h4>
+					<h4>Liste des Cinemas</h4>
 				</div>
 				<div class="panel-body">
 					<div *ngIf="cinemas.length>0">
 						<table class="table table-striped">
-							<thead>
 								<tr>
-									<td>#ID</td>
-									<td>NOM</td>
-									<td>LONGITUDE</td>
-									<td>LATITUDE</td>
-									<td>ALTITUDE</td>
-									<td>NOMBRE SALLES</td>
-									<td>VILLE</td>
-									<td>MODIFICATION</td>
-									<td>SUPPRESSION</td>
+									<td>#Id</td>
+									<td>Nom</td>
+									<td>Longitude</td>
+									<td>Latitude</td>
+									<td>Altitude</td>
+									<td>NombreSalles</td>
+									<td>Ville</td>
+									<td>Modification</td>
+									<td>Suppression</td>
 								</tr>
-							</thead>
-							<tbody>
 								<tr *ngFor="let c of cinemas">
-									<td> {{c.id}}</td>
-									<td> {{c.name}}</td>
-									<td> {{c.longitude}}</td>
-									<td> {{c.latitude}}</td>
-									<td> {{c.altitude}}</td>
-									<td> {{c.nombreSalles}}</td>
-									<td> {{c.ville.name}}</td>
-									<td><button class="clickable btn 8btn-success"
+									<td>{{c.id}}</td>
+									<td>{{c.name}}</td>
+									<td>{{c.longitude}}</td>
+									<td>{{c.latitude}}</td>
+									<td>{{c.altitude}}</td>
+									<td>{{c.nombreSalles}}</td>
+									<td>{{c.ville.name}}</td>
+									<td><button class="btn btn-success"
 											(click)="updateCinema(c.id)">Modifier</button></td>
-									<td><button class="clickable btn btn-danger"
-											(click)="deleteCinema(c.id)">Delete</button></td>
+									<td><button class="btn btn-danger"
+											(click)="deleteCinema(c.id)">Supprimer</button></td>
 								</tr>
-							</tbody>
 						</table>
 					</div>
 				</div>
