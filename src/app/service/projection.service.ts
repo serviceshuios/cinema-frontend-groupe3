@@ -25,7 +25,7 @@ export class ProjectionService {
   } // fin add
 
   public deleteProjection(id: number) {
-    return this.httpClient.delete<Projection>(this.host + '/categories/' + id);
+    return this.httpClient.delete<Projection>(this.host + '/projections/' + id);
   }// fin delete
 }
 

@@ -6,6 +6,7 @@ import { Film } from 'src/app/models/film.model';
 import { Salle } from 'src/app/models/salle.model';
 import { SalleService } from 'src/app/service/salle.service';
 import { FilmService } from 'src/app/service/film.service';
+import { Categorie } from 'src/app/models/categorie.model';
 
 @Component({
   selector: 'app-projectionfilm',
@@ -18,27 +19,8 @@ export class ProjectionfilmComponent implements OnInit {
     id: 0,
     dateProjection: null,
     prix: 0,
-    film: null,
-    salle: null,
-  }
-
-  film: Film = {
-
-    id: 0,
-    titre: null,
-    duree: 0,
-    description: null,
-    realisateur: null,
-    photo: null,
-    dateSortie: null,
-    categorie: null
-  }
-
-  salle: Salle = {
-
-    id: 0,
-    name: null,
-    nombrePlaces: 0
+    film: new Film(),
+    salle: new Salle(),
   }
 
   films;
