@@ -19,8 +19,10 @@
 						<label>Nombre de Salles: </label><br>
 						<input [(ngModel)]="cinema.nombreSalles" placeholder="Entrer un Nombre de Salle"><br><br>
 
-						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
-						
+						<select class="form-control" [(ngModel)]="cinema.ville">
+							<option *ngFor="let v of villes" [ngValue]="v">{{v.name}}</option>
+						</select>
+
 						<span *ngIf="test == 0">
 							<button (click)="saveCinema()" class="btn btn-success">Ajouter</button>
 						</span>
@@ -47,6 +49,7 @@
 									<td>LATITUDE</td>
 									<td>ALTITUDE</td>
 									<td>NOMBRE SALLES</td>
+									<td>VILLE</td>
 									<td>MODIFICATION</td>
 									<td>SUPPRESSION</td>
 								</tr>
@@ -59,17 +62,17 @@
 									<td> {{c.latitude}}</td>
 									<td> {{c.altitude}}</td>
 									<td> {{c.nombreSalles}}</td>
-									<td><button class="clickable btn btn-success"
+									<td> {{c.ville.name}}</td>
+									<td><button class="clickable btn 8btn-success"
 											(click)="updateCinema(c.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
 											(click)="deleteCinema(c.id)">Delete</button></td>
 								</tr>
 							</tbody>
 						</table>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
