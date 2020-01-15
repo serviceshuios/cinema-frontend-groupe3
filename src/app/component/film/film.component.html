@@ -19,11 +19,13 @@
 							<input [(ngModel)]="film.dateSortie" type="date" id="input" class="form-control" mdbInput>
 							Date <br><br>
 
-							<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
 
-							<ng-select [items]="categories" bindLabel="name" placeholder="Choisir une categorie"
-								[(ngModel)]="film">
-							</ng-select>
+							<select class="form-control" [(ngModel)]="film.categorie">
+								<option *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
+							</select>
+							<!-- <ng-select [items]="categories" bindLabel="name" placeholder="Choisir une categorie"
+								[(ngModel)]="film.categorie">
+							</ng-select> -->
 
 							<!-- <input [(ngModel)]="film.dateSortie"> Date de Sortie <br><br> -->
 

@@ -19,7 +19,13 @@ export class FilmComponent implements OnInit {
     duree: 0,
     description: '',
     photo: '',
-    dateSortie: null
+    dateSortie: null,
+    categorie: new Categorie()
+  };
+
+  appcat: Categorie = {
+    id: 0,
+    name: ''
   };
 
   // liste des categories
@@ -45,6 +51,7 @@ export class FilmComponent implements OnInit {
       this.film.description = '';
       this.film.photo = '';
       this.film.dateSortie = null;
+      this.film.categorie = new Categorie();
       this.getAllFilms();
       this.getAllCategories();
     });

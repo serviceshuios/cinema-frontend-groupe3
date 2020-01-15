@@ -8,4 +8,5 @@ export class Film {
 	public description: string;
 	public photo: string;
 	public dateSortie: Date;
+	public categorie: Categorie;
 }
