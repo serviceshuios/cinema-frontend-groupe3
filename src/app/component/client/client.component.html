@@ -36,7 +36,7 @@
 							<a class="navbar-brand">Les cinemas</a>
 							<div *ngIf="cinemas.length>0"></div>
 						</div>
-						<ul class="nav navbar-nav" *ngFor="let c of cinemas">							
+						<ul class="nav navbar-nav" *ngFor="let c of cinemas">
 							<li><a (click)="chercherSalles(c.id)">{{c.name}}</a></li>
 						</ul>
 					</div>
@@ -54,54 +54,52 @@
 </div>
 
 <div class="row">
-	<div class="col-md-8">
-		<div class="panel panel-primary">
+	<div class="col-md-12">
+		<div *ngFor="let s of salles">
+			<div class="panel panel-primary">
 
-			<div class="panel-heading">
-				<div *ngFor="let s of salles">
+				<div class="panel-heading">
+
 					<button class="btn btn-primary" (click)="chercherProjections(s.id)">{{s.name}}</button>
 				</div>
 			</div>
 			<div class="panel-body">
-				<div *ngFor="let s of salles">
-					<div *ngFor="let projection of s.projectionFilms">
+				<div *ngFor="let projection of s.projectionFilms">
 
-						<div class="col-md-4 maxDiv">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<p>Titre : {{projection.film.titre}}</p>
-								</div>
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-3 maxImage">
-											<img class="maxImage" src="{{projection.film.photo}}" alt="image" />
-										</div>
-										<div class="col-md-9">
-											<div class="panel panel-primary">
-												<div class="panel-heading">
-													<p>Seances</p>
-												</div>
-												<div class="panel-body">
-													<div class="table table-striped">
-														<tr>
-															<td>{{projection.seance.heureDebut | date:'M/d/yy'}}
-															</td>
-														</tr>
-													</div>
+					<div class="col-md-6 maxDiv">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<p>Titre : {{projection.film.titre}}</p>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 maxImage">
+										<img class="maxImage" src="{{projection.film.photo}}" alt="image" />
+									</div>
+									<div class="col-md-9">
+										<div class="panel panel-primary">
+											<div class="panel-heading">
+												<p>Seances</p>
+											</div>
+											<div class="panel-body">
+												<div class="table table-striped">
+													<tr>
+														<td (click)="afficherPlaces(projection.pl)">{{projection.seance.heureDebut | date:'M/d/yy'}}</td>
+													</tr>
 												</div>
 											</div>
 										</div>
 									</div>
-
 								</div>
+
+
 							</div>
 
 
 						</div>
 					</div>
 				</div>
-
-			</div>
+			</div>F
 		</div>
 	</div>
 </div>

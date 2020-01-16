@@ -5,6 +5,7 @@ import { CinemaService } from 'src/app/service/cinema.service';
 import { ProjectionService } from 'src/app/service/projection.service';
 import { SalleService } from 'src/app/service/salle.service';
 import { Projection } from 'src/app/models/projection.model';
+import { Place } from 'src/app/models/place.model';
 
 @Component({
   selector: 'app-client',
@@ -20,7 +21,7 @@ export class ClientComponent implements OnInit {
   /*Les déclatation cinemas*/
   idCinema =0;
 
-
+  afficherPlace: Array<Place> = [];
   cinemas: Array<Cinema> = [];
 
   villes;
@@ -70,6 +71,10 @@ export class ClientComponent implements OnInit {
       });
       this.idCinema = 0;
     })
+  }
+
+  afficherPlaces(){
+    this.afficherPlace = true
   }
 
 } // fin classe
