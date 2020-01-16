@@ -14,9 +14,18 @@ export class ClientComponent implements OnInit {
 
   cinemas: Array<Cinema> = [];
 
+  villes;
+
   constructor(private villeService: VilleService) { }
 
   ngOnInit() {
+    this.getAllVilles();
+  }
+
+  getAllVilles(){
+    this.villeService.getAllVilles().subscribe(data =>{
+      this.villes = data;
+    });
   }
 
   chercherCinemas(nomVille: string) {
