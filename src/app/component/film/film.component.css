@@ -2,6 +2,23 @@
 	margin-left: 1% !important;
 }
 
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.maxDiv{
+    max-height: 400px;
+    max-width: 500px;
+}
+
+.maxImage{
+    max-height: 250px;
+    max-width: 200px;
+    min-height: 250px;
+    min-width: 200px;
+}
+
 /*
  * Base structure
  */

@@ -37,9 +37,11 @@
 						<label>Duree: </label><br>
 						<input [(ngModel)]="film.duree" class="form-control"><br>
 						<label>Realisateur: </label><br>
-						<input [(ngModel)]="film.realisateur" class="form-control" placeholder="Entrer un realisateur"><br>
+						<input [(ngModel)]="film.realisateur" class="form-control"
+							placeholder="Entrer un realisateur"><br>
 						<label>Description: </label><br>
-						<input [(ngModel)]="film.description" class="form-control" placeholder="Entrer une description"><br>
+						<input [(ngModel)]="film.description" class="form-control"
+							placeholder="Entrer une description"><br>
 						<label>Photo: </label><br>
 						<input [(ngModel)]="film.photo" class="form-control" placeholder="Entrer une photo"><br>
 						<label>Date: </label><br>
@@ -104,11 +106,12 @@
 						{{f.titre}}<br />
 					</div>
 					<div class="panel-body">
-						Photo: {{f.photo}}
-						<!-- <img src="{{p.previewURL}}" /> <br /> -->
+						<div class="col-md-3 maxImage">
+							<img class="maxImage" src="{{f.photo}}" alt="image" />
+						</div>
 					</div>
 					<div class="panel-footer">
-						{{f.description}} <span class="glyphicon glyphicon-heart"></span> <br>
+						{{f.description}} <span class="glyphicon"></span> <br>
 						<a class="btn btn-success" (click)="detailFilm(f.id)">Modifier</a>
 						<button class="btn btn-danger espace" (click)="deleteFilm(f.id)">Supprimer</button>
 					</div>
