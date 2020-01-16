@@ -1,6 +1,8 @@
 import { Salle } from 'src/app/models/salle.model';
 import { Component, OnInit } from '@angular/core';
 import { SalleService } from 'src/app/service/salle.service';
+import { Cinema } from 'src/app/models/cinema.model';
+import { CinemaService } from 'src/app/service/cinema.service';
 
 @Component({
   selector: 'app-salle',
@@ -13,8 +15,12 @@ export class SalleComponent implements OnInit {
   salle: Salle = {
     id: 0,
     name: '',
-    nombrePlaces: 0
+    nombrePlaces: 0,
+    cinema: new Cinema()
   }
+
+  // Liste des cinemas
+  cinemas
 
   // Liste des salles
   salles;
@@ -22,25 +28,28 @@ export class SalleComponent implements OnInit {
   // Variable de test
   test = 0;
 
-  constructor(private salleService: SalleService) { }
+  constructor(private salleService: SalleService, private cinemaService: CinemaService) { }
 
   ngOnInit() {
-    this.getAllSalle();
+    this.getAllSalles();
+    this.getAllCinemas()
     this.test = 0;
   }
 
   saveSalle() {
     this.salleService.addSalle(this.salle).subscribe(data => {
       this.salle = data;
-      this.getAllSalle();
+      this.getAllSalles();
+      this.getAllCinemas()
       this.salle.name = '';
       this.salle.nombrePlaces = 0;
+      this.salle.cinema = new Cinema();
       this.salle.id = 0;
       this.test = 0;
     });
   }
 
-  getAllSalle() {
+  getAllSalles() {
     this.salleService.getAllSalles().subscribe(data => {
       this.salles = data;
       this.test = 0;
@@ -56,8 +65,14 @@ export class SalleComponent implements OnInit {
 
   deleteSalle(id: number) {
     this.salleService.deleteCinema(id).subscribe(data => {
-    this.getAllSalle();
     this.test = 0;
+    });
+  }
+
+  getAllCinemas() {
+    this.cinemaService.getAllCinemas().subscribe(data => {
+      this.cinemas = data;
+      this.test = 0;
     });
   }
 

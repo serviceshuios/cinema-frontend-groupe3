@@ -53,7 +53,15 @@
             </label>
           </div><br><br>
 
-          <select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+          <label>Choix de la place : </label><br>
+          <select class="form-control" [(ngModel)]="ticket.place">
+            <option *ngFor="let p of places" [ngValue]="p">{{p.numero}}</option>
+          </select><br>
+
+          <label>Choix de la projection : </label><br>
+          <select class="form-control" [(ngModel)]="ticket.projection">
+            <option *ngFor="let p of projections" [ngValue]="p">{{p.dateProjection | date:'M/d/yy'}}</option>
+          </select><br>
 
           <span *ngIf="test == 0">
             <button (click)="saveTicket()" class="btn btn-success">Ajouter</button>
@@ -79,17 +87,21 @@
                   <td>Prix</td>
                   <td>Code de Paiement</td>
                   <td>Reserver</td>
+                  <td>Place</td>
+                  <td>Projection</td>
                   <td>Modification</td>
                   <td>Suppression</td>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let t of tickets">
-                  <td> {{t.id}}</td>
-                  <td> {{t.nomClient}}</td>
-                  <td> {{t.prix}}</td>
-                  <td> {{t.codePayement}}</td>
-                  <td> {{t.reservee}}</td>
+                  <td>{{t.id}}</td>
+                  <td>{{t.nomClient}}</td>
+                  <td>{{t.prix}}</td>
+                  <td>{{t.codePayement}}</td>
+                  <td>{{t.reservee}}</td>
+                  <td>{{t.place.numero}}</td>
+                  <td>{{t.projection.dateProjection | date:'M/d/yy'}}</td>
                   <td><button class="clickable btn btn-success" (click)="detailTicket(t.id)">Modifier</button></td>
                   <td><button class="clickable btn btn-danger" (click)="deleteTicket(t.id)">Supprimer</button></td>
                 </tr>

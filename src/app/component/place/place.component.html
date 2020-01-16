@@ -40,6 +40,10 @@
 						<input [(ngModel)]="place.latitude" class="form-control" placeholder="latitude"><br>
 						<label>Altitude: </label><br>
 						<input [(ngModel)]="place.altitude" class="form-control" placeholder="altitude"><br>
+						<label>Choix de la place: </label><br>
+						<select class="form-control" [(ngModel)]="place.salle">
+							<option *ngFor="let s of salles" [ngValue]="s">{{s.name}}</option>
+						</select><br>
 
 						<span *ngIf="test == 0">
 							<button (click)="savePlace()" class="btn btn-success">Ajouter</button>
@@ -65,6 +69,7 @@
 								<td>Longitude</td>
 								<td>Latitude</td>
 								<td>Altitude</td>
+								<td>Salle</td>
 								<td>Modification</td>
 								<td>Suppression</td>
 							</tr>
@@ -74,6 +79,7 @@
 								<td>{{p.longitude}}</td>
 								<td>{{p.latitude}}</td>
 								<td>{{p.altitude}}</td>
+								<td>{{p.salle.name}}</td>
 								<td><button class="btn btn-success" (click)="updatePlace(p.id)">Modifier</button></td>
 								<td><button class="btn btn-danger" (click)="deletePlace(p.id)">Supprimer</button></td>
 							</tr>

@@ -65,6 +65,7 @@ export class ProjectionfilmComponent implements OnInit {
         this.test = 0;
         this.projection.film = new Film();
         this.projection.salle = new Salle();
+        this.projection.seance = new Seance();
         this.getAllProjections();
         this.getAllFilms();
         this.getAllSalles();

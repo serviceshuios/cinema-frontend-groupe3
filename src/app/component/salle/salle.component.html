@@ -35,9 +35,11 @@
 						<input [(ngModel)]="salle.name" class="form-control" placeholder="Entrer un nom"><br>
 						<label>Nombre de Places: </label><br>
 						<input [(ngModel)]="salle.nombrePlaces" class="form-control"
-							placeholder="Entrer un Nombre de Place"><br><br>
-
-						<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+							placeholder="Entrer un Nombre de Place"><br>
+						<label>Choix du cinema: </label><br>
+						<select class="form-control" [(ngModel)]="salle.cinema">
+							<option *ngFor="let c of cinemas" [ngValue]="c">{{c.name}}</option>
+						</select><br>
 
 						<span *ngIf="test == 0">
 							<button (click)="saveSalle()" class="btn btn-success">Ajouter</button>
@@ -62,6 +64,7 @@
 									<td>#Id</td>
 									<td>Nom</td>
 									<td>NombrePlaces</td>
+									<td>Cinema</td>
 									<td>Modification</td>
 									<td>Suppression</td>
 								</tr>
@@ -71,6 +74,7 @@
 									<td> {{s.id}}</td>
 									<td> {{s.name}}</td>
 									<td> {{s.nombrePlaces}}</td>
+									<td> {{s.cinema.name}}</td>
 									<td><button class="clickable btn btn-success"
 											(click)="updateSalle(s.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
