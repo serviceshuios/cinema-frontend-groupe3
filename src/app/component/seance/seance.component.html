@@ -63,6 +63,7 @@
 								<tr>
 									<td>#Id</td>
 									<td>Heure de Debut</td>
+									<td>Projection</td>
 									<td>Modification</td>
 									<td>Suppression</td>
 								</tr>
@@ -72,6 +73,7 @@
 								<tr *ngFor="let s of seances">
 									<td> {{s.id}}</td>
 									<td> {{s.heureDebut | date:'short'}}</td>
+									<td> {{s.projectionFilm?.dateProjection | date:'short'}} (En cours de dev)</td>
 									<td><button class="clickable btn btn-success"
 											(click)="updateSeance(s.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
