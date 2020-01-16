@@ -16,8 +16,8 @@ export class TicketComponent implements OnInit {
   ticket: Ticket = {
     id: 0 ,
     nomClient: '',
-    prix:0 ,
-    codePayement:0 ,
+    prix: 0 ,
+    codePayement: 0 ,
     reservee: null,
     place: new Place(),
     projection: new Projection()
@@ -56,7 +56,7 @@ export class TicketComponent implements OnInit {
       this.ticket.place = new Place();
       this.ticket.projection = new Projection();
     })
-  } // fin save 
+  } // fin save
 
     getAllTickets() {
       this.ticketService.getAllTickets()
@@ -64,7 +64,7 @@ export class TicketComponent implements OnInit {
         this.tickets = data
         this.test = 0;
       })
-    } // getAll 
+    } // getAll
 
     detailTicket(id: number) {
       this.ticketService.getTicket(id)
@@ -74,9 +74,9 @@ export class TicketComponent implements OnInit {
       })
     } // fin detail
 
-    deleteTicket (id: number) {
+    deleteTicket(id: number) {
       this.ticketService.deleteTicket(id)
-      .subscribe (data =>{
+      .subscribe (data => {
       this.getAllTickets();
       this.test = 0;
       })
