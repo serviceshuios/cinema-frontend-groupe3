@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VilleService } from 'src/app/service/ville.service';
 import { Cinema } from 'src/app/models/cinema.model';
+import { CinemaService } from 'src/app/service/cinema.service';
 
 @Component({
   selector: 'app-client',
@@ -9,14 +10,21 @@ import { Cinema } from 'src/app/models/cinema.model';
 })
 export class ClientComponent implements OnInit {
 
+  /*Les déclarations villes*/ 
   nomVille: "";
   idVille = 0;
+
+  /*Les déclatation cinemas*/
+  idCinema =0;
+
 
   cinemas: Array<Cinema> = [];
 
   villes;
+  salles;
 
-  constructor(private villeService: VilleService) { }
+
+  constructor(private villeService: VilleService, private cinemaService: CinemaService) { }
 
   ngOnInit() {
     this.getAllVilles();
@@ -26,7 +34,7 @@ export class ClientComponent implements OnInit {
     this.villeService.getAllVilles().subscribe(data =>{
       this.villes = data;
     });
-  }
+  } // fin getAll
 
   chercherCinemas(nomVille: string) {
     this.villeService.getVillebyName(nomVille).subscribe(data => {
@@ -37,9 +45,17 @@ export class ClientComponent implements OnInit {
         this.idVille = 0;
       })
 
-    }
-    )
+    })
+  } // fin cherchecinemas
+
+  chercherSalles(idCinema: number) {
+    this.cinemaService.chercherSallesCinema(idCinema)
+    .subscribe (data =>{
+      this.salles = data;
+      this.idCinema = 0;
+    })
   }
-}
+
+} // fin classe
 
 

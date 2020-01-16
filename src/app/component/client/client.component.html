@@ -9,28 +9,21 @@
 				<div class="panel-heading">
 					<h4>Veuillez indiquez votre ville</h4>
 				</div>
-
 				<div class="panel-body">
 					<div class="row">
-
 						<div class="col-md-4 sidebar">
 							<ul class="nav nav-sidebar" *ngFor="let v of villes">
 								<li><a (click)="chercherCinemas(v.name)">{{v.name}}</a></li><br>
 							</ul>
 						</div>
-
-
 						<div class=" col-md-6">
 							<input [(ngModel)]="nomVille" type="text" id="input" class="form-control" mdbInput>
 							<br>
 							<button class="btn btn-primary" (click)="chercherCinemas(nomVille)">Valider</button>
 						</div>
-
 					</div>
-
 				</div>
 			</div>
-
 			<div class="col-md-8">
 				<div class="panel panel-danger">
 					<div class="panel-heading">
@@ -47,7 +40,28 @@
 								<tr *ngFor="let c of cinemas">
 									<td>{{c.id}}</td>
 									<td>{{c.name}}</td>
-									<td><a class="btn btn-success">Choisir</a></td>
+									<td><a class="btn btn-success" (click)="chercherSalles(c.id)"  >Choisir</a></td>
+									<!-- <td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
+								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td> -->
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			<div class="col-md-8">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h4>Lister les salles</h4>
+					</div>
+					<div class="panel-body">
+		<!--		<div *ngIf="salles.length > 0"> -->		
+							<table class="table table-striped">
+								<tr>
+									<td>name</td>
+								</tr>
+								<tr *ngFor="let s of salles">
+									<td>{{s.name}}</td>
+									<td><a class="btn btn-success"  >Choisir</a></td>
 									<!-- <td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
 								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td> -->
 								</tr>
