@@ -18,10 +18,12 @@ export class SeanceComponent implements OnInit {
     projectionFilm: new Projection()
   }
 
-  // Liste des cinemas
-  seances;
+  projection;
 
   projections;
+
+  // Liste des cinemas
+  seances;
 
   // Variable de test
   test = 0;
@@ -30,7 +32,6 @@ export class SeanceComponent implements OnInit {
 
   ngOnInit() {
     this.getAllSeance();
-    this.getAllProjection();
     this.test = 0;
   }
 
@@ -47,13 +48,18 @@ export class SeanceComponent implements OnInit {
   getAllSeance() {
     this.seanceService.getAllSeances().subscribe(data => {
       this.seances = data;
+      this.seances.forEach(seance => {
+        this.seanceService.getSeanceProjection(seance.id).subscribe(data2 => {
+          seance.projectionFilm = data2;
+        })
+      });
       this.test = 0;
     });
   }
 
-  getAllProjection() {
-    this.projectionService.getAllProjections().subscribe(data => {
-      this.projections = data;
+  getProjection(id: number) {
+    this.seanceService.getSeanceProjection(id).subscribe(data => {
+      this.projection = data;
       this.test = 0;
     })
   }
@@ -67,9 +73,8 @@ export class SeanceComponent implements OnInit {
 
   deleteSeance(id: number) {
     this.seanceService.deleteSeance(id).subscribe(data => {
-    this.getAllSeance();
-    this.test = 0;
+      this.getAllSeance();
+      this.test = 0;
     });
   }
-
 }

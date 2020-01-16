@@ -32,14 +32,14 @@
 				<div class="panel-body">
 
 					<label>Heure de debut: </label><br>
-
 					<input [(ngModel)]="seance.heureDebut" type="datetime-local" id="input" class="form-control"
 						mdbInput><br>
 
-					<label>Choix de la projection: </label><br>
-						<select class="form-control" [(ngModel)]="seance.projectionFilm">
-							<option *ngFor="let p of projections" [ngValue]="p">{{p.dateProjection | date:'M/d/yy'}}</option>
-						</select><br>
+					<!-- <label>Choix de la projection: </label><br>
+					<select class="form-control">
+						<option *ngFor="let p of projections" [ngValue]="p">{{p.dateProjection | date:'M/d/yy'}}
+						</option>
+					</select><br> -->
 
 					<span *ngIf="test == 0">
 						<button (click)="saveSeance()" class="btn btn-success">Ajouter</button>
@@ -68,12 +68,12 @@
 									<td>Suppression</td>
 								</tr>
 							</thead>
-							
+
 							<tbody>
 								<tr *ngFor="let s of seances">
 									<td> {{s.id}}</td>
 									<td> {{s.heureDebut | date:'short'}}</td>
-									<td> {{s.projection.dateProjection | date:'M/d/yy'}}</td>
+									<td> {{s.projectionFilm.dateProjection | date:'short'}}</td>
 									<td><button class="clickable btn btn-success"
 											(click)="updateSeance(s.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
