@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Seance } from 'src/app/models/seance.model';
 import { SeanceService } from 'src/app/service/seance.service';
+import { Projection } from 'src/app/models/projection.model';
+import { ProjectionService } from 'src/app/service/projection.service';
 
 @Component({
   selector: 'app-seance',
@@ -12,19 +14,23 @@ export class SeanceComponent implements OnInit {
   // Récupère le cinema saisie
   seance: Seance = {
     id: 0,
-    heureDebut: null
+    heureDebut: null,
+    projectionFilm: new Projection()
   }
 
   // Liste des cinemas
   seances;
 
+  projections;
+
   // Variable de test
   test = 0;
 
-  constructor(private seanceService: SeanceService) { }
+  constructor(private seanceService: SeanceService, private projectionService: ProjectionService) { }
 
   ngOnInit() {
     this.getAllSeance();
+    this.getAllProjection();
     this.test = 0;
   }
 
@@ -43,6 +49,13 @@ export class SeanceComponent implements OnInit {
       this.seances = data;
       this.test = 0;
     });
+  }
+
+  getAllProjection() {
+    this.projectionService.getAllProjections().subscribe(data => {
+      this.projections = data;
+      this.test = 0;
+    })
   }
 
   updateSeance(id: number) {

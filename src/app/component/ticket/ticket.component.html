@@ -60,7 +60,7 @@
 
           <label>Choix de la projection : </label><br>
           <select class="form-control" [(ngModel)]="ticket.projection">
-            <option *ngFor="let p of projections" [ngValue]="p">{{p.dateProjection | date:'M/d/yy'}}</option>
+            <option *ngFor="let p of projections" [ngValue]="p">{{p.dateProjection }}</option>
           </select><br>
 
           <span *ngIf="test == 0">

@@ -22,6 +22,7 @@ export class TicketComponent implements OnInit {
     place: new Place(),
     projection: new Projection()
   }
+  
 
   places;
 
