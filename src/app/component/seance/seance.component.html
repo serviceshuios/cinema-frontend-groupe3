@@ -36,7 +36,10 @@
 					<input [(ngModel)]="seance.heureDebut" type="datetime-local" id="input" class="form-control"
 						mdbInput><br>
 
-					<select ng-model="selectedName" ng-options="x for x in names"></select><br><br>
+					<label>Choix de categorie: </label><br>
+						<select class="form-control" [(ngModel)]="seance.projectionFilm">
+							<option *ngFor="let p of projections" [ngValue]="p">{{p.dateProjection}}</option>
+						</select><br>
 
 					<span *ngIf="test == 0">
 						<button (click)="saveSeance()" class="btn btn-success">Ajouter</button>
@@ -68,6 +71,7 @@
 								<tr *ngFor="let s of seances">
 									<td> {{s.id}}</td>
 									<td> {{s.heureDebut | date:'short'}}</td>
+									<td> {{s.projection.dateProjection | date:''}}</td>
 									<td><button class="clickable btn btn-success"
 											(click)="updateSeance(s.id)">Modifier</button></td>
 									<td><button class="clickable btn btn-danger"
