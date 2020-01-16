@@ -64,7 +64,7 @@ export class SalleComponent implements OnInit {
   }
 
   deleteSalle(id: number) {
-    this.salleService.deleteCinema(id).subscribe(data => {
+    this.salleService.deleteSalle(id).subscribe(data => {
     this.test = 0;
     });
   }

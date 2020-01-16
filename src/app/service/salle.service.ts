@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Salle } from '../models/salle.model';
+import { Projection } from '../models/projection.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,11 @@ export class SalleService {
      return this.httpClient.post<Salle>(this.host + '/salles/', salle);
   } // fin add
 
-  public deleteCinema(id: number) {
+  public deleteSalle(id: number) {
     return this.httpClient.delete<Salle>(this.host + '/salles/' + id);
   }// fin delete
+
+  public chercherProjectionsSalle(id: number): Observable<Array<Projection>>{
+    return this.httpClient.get<Array<Projection>>(this.host+'/salles/'+id+"/projections");
+  }
 }
