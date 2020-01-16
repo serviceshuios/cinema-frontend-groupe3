@@ -2,8 +2,12 @@
 	margin-left: 1% !important;
 }
 
+.espaceImage {
+	margin-left: 95% !important;
+}
+
 .responsive {
-  width: 100%;
+  width: 50%;
   height: auto;
 }
 
@@ -17,6 +21,10 @@
     max-width: 200px;
     min-height: 250px;
     min-width: 200px;
+}
+
+.div {
+	text-align: center;
 }
 
 /*

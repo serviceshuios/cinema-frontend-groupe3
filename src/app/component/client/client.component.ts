@@ -74,7 +74,7 @@ export class ClientComponent implements OnInit {
   }
 
   afficherPlaces(){
-    this.afficherPlace = true
+    // this.afficherPlace = true
   }
 
 } // fin classe

@@ -2,11 +2,11 @@
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
-				<li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+				<li><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
 			</ul>
 			<ul class="nav nav-sidebar">
 				<li><a href="/cinema">Cinema</a></li>
-				<li><a href="/ville">Ville</a></li>
+				<li class="active"><a href="/ville">Ville</a></li>
 				<li><a href="/salle">Salle</a></li>
 				<li><a href="/place">Place</a></li>
 
@@ -21,7 +21,6 @@
 </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<br><br><br>
 	<h1 class="page-header">Dashboard</h1>
 	<div class="row">
 		<div class="col-md-4">
@@ -53,24 +52,30 @@
 				<div class="panel-body">
 					<div *ngIf="villes.length>0">
 						<table class="table table-striped">
-							<tr>
-								<td>#Id</td>
-								<td>Nom</td>
-								<td>Longitude</td>
-								<td>Latitude</td>
-								<td>Altitude</td>
-								<td>Modification</td>
-								<td>Suppression</td>
-							</tr>
-							<tr *ngFor="let v of villes">
-								<td>{{v.id}}</td>
-								<td>{{v.name}}</td>
-								<td>{{v.longitude}}</td>
-								<td>{{v.latitude}}</td>
-								<td>{{v.altitude}}</td>
-								<td><button class="btn btn-success" (click)="updateVille(v.id)">Modifier</button></td>
-								<td><button class="btn btn-danger" (click)="deleteVille(v.id)">Supprimer</button></td>
-							</tr>
+							<thead>
+								<tr>
+									<td>#Id</td>
+									<td>Nom</td>
+									<td>Longitude</td>
+									<td>Latitude</td>
+									<td>Altitude</td>
+									<td>Modification</td>
+									<td>Suppression</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let v of villes">
+									<td>{{v.id}}</td>
+									<td>{{v.name}}</td>
+									<td>{{v.longitude}}</td>
+									<td>{{v.latitude}}</td>
+									<td>{{v.altitude}}</td>
+									<td><button class="btn btn-success" (click)="updateVille(v.id)">Modifier</button>
+									</td>
+									<td><button class="btn btn-danger" (click)="deleteVille(v.id)">Supprimer</button>
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>

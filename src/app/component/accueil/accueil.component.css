@@ -1,5 +1,3 @@
-:host {
-    background-color: green;
-    size: 2000px 2000px;
-    display: block;
-} 
+.div {
+	text-align: center;
+}

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
-				<li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+				<li><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
 			</ul>
 			<ul class="nav nav-sidebar">
 				<li><a href="/cinema">Cinema</a></li>
@@ -11,7 +11,7 @@
 				<li><a href="/place">Place</a></li>
 
 				<li><a href="/categorie">Categorie</a></li>
-				<li><a href="/film">Film</a></li>
+				<li class="active"><a href="/film">Film</a></li>
 				<li><a href="/projectionfilm">Projection Film</a></li>
 				<li><a href="/seance">Seance</a></li>
 				<li><a href="/ticket">Ticket</a></li>
@@ -21,7 +21,6 @@
 </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<br><br><br>
 	<h1 class="page-header">Dashboard</h1>
 	<div class="row">
 		<div class="col-md-4">
@@ -73,26 +72,31 @@
 				<div class="panel-body">
 					<div *ngIf="films.length>0">
 						<table class="table table-striped">
-							<tr>
-								<td>ID</td>
-								<td>Titre</td>
-								<td>Duree</td>
-								<td>realisateur</td>
-								<td>description</td>
-								<td>dateSortie</td>
-								<td>Modification</td>
-								<td>Suppression</td>
-							</tr>
-							<tr *ngFor="let f of films">
-								<td> {{f.id}}</td>
-								<td> {{f.titre}}</td>
-								<td>{{f.duree}}</td>
-								<td>{{f.realisateur}}</td>
-								<td>{{f.description}}</td>
-								<td>{{f.dateSortie | date:'M/d/yy'}}</td>
-								<td><a class="btn btn-success" (click)="detailFilm(f.id)">Modifier</a></td>
-								<td><button class="btn btn-danger" (click)="deleteFilm(f.id)">Supprimer</button></td>
-							</tr>
+							<thead>
+								<tr>
+									<td>#Id</td>
+									<td>Titre</td>
+									<td>Duree</td>
+									<td>Realisateur</td>
+									<td>Description</td>
+									<td>DateSortie</td>
+									<td>Modification</td>
+									<td>Suppression</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let f of films">
+									<td> {{f.id}}</td>
+									<td> {{f.titre}}</td>
+									<td>{{f.duree}}</td>
+									<td>{{f.realisateur}}</td>
+									<td>{{f.description}}</td>
+									<td>{{f.dateSortie | date:'M/d/yy'}}</td>
+									<td><a class="btn btn-success" (click)="detailFilm(f.id)">Modifier</a></td>
+									<td><button class="btn btn-danger" (click)="deleteFilm(f.id)">Supprimer</button>
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
@@ -106,12 +110,12 @@
 						{{f.titre}}<br />
 					</div>
 					<div class="panel-body">
-						<div class="col-md-3 maxImage">
-							<img class="maxImage" src="{{f.photo}}" alt="image" />
+						<div class="col-md-3">
+							<span class="espaceImage"><img class="maxImage" src="{{f.photo}}" alt="image" /></span>
 						</div>
 					</div>
 					<div class="panel-footer">
-						{{f.description}} <span class="glyphicon"></span> <br>
+						{{f.description}} <span class="glyphicon"></span> <br><br>
 						<a class="btn btn-success" (click)="detailFilm(f.id)">Modifier</a>
 						<button class="btn btn-danger espace" (click)="deleteFilm(f.id)">Supprimer</button>
 					</div>

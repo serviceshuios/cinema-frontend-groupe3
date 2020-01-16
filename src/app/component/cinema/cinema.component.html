@@ -1,29 +1,28 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li class="active"><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
-      </ul>
-      <ul class="nav nav-sidebar">
-        <li><a href="/cinema">Cinema</a></li>
-        <li><a href="/ville">Ville</a></li>
-        <li><a href="/salle">Salle</a></li>
-        <li><a href="/place">Place</a></li>
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li><a href="/admin">Accueil <span class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li class="active"><a href="/cinema">Cinema</a></li>
+				<li><a href="/ville">Ville</a></li>
+				<li><a href="/salle">Salle</a></li>
+				<li><a href="/place">Place</a></li>
 
-        <li><a href="/categorie">Categorie</a></li>
-        <li><a href="/film">Film</a></li>
-        <li><a href="/projectionfilm">Projection Film</a></li>
-        <li><a href="/seance">Seance</a></li>
-        <li><a href="/ticket">Ticket</a></li>
-      </ul>
-    </div>
-  </div>
+				<li><a href="/categorie">Categorie</a></li>
+				<li><a href="/film">Film</a></li>
+				<li><a href="/projectionfilm">Projection Film</a></li>
+				<li><a href="/seance">Seance</a></li>
+				<li><a href="/ticket">Ticket</a></li>
+			</ul>
+		</div>
+	</div>
 </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-  <br><br><br>
-  <h1 class="page-header">Dashboard</h1>
-  <div class="row">
+	<h1 class="page-header">Dashboard</h1>
+	<div class="row">
 		<div class="col-md-4">
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -65,6 +64,7 @@
 				<div class="panel-body">
 					<div *ngIf="cinemas.length>0">
 						<table class="table table-striped">
+							<thead>
 								<tr>
 									<td>#Id</td>
 									<td>Nom</td>
@@ -76,6 +76,8 @@
 									<td>Modification</td>
 									<td>Suppression</td>
 								</tr>
+							</thead>
+							<tbody>
 								<tr *ngFor="let c of cinemas">
 									<td>{{c.id}}</td>
 									<td>{{c.name}}</td>
@@ -84,11 +86,10 @@
 									<td>{{c.altitude}}</td>
 									<td>{{c.nombreSalles}}</td>
 									<td>{{c.ville.name}}</td>
-									<td><button class="btn btn-success"
-											(click)="updateCinema(c.id)">Modifier</button></td>
-									<td><button class="btn btn-danger"
-											(click)="deleteCinema(c.id)">Supprimer</button></td>
+									<td><button class="btn btn-success" (click)="updateCinema(c.id)">Modifier</button></td>
+									<td><button class="btn btn-danger" (click)="deleteCinema(c.id)">Supprimer</button></td>
 								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>

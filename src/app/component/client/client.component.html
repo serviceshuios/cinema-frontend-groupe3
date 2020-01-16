@@ -1,11 +1,8 @@
 <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
-	<br><br><br>
 	<h1 class="page-header">Bienvenue cher client !</h1>
 	<div class="row">
-		<div class="col-md-4">
-
-			<div class="panel panel-primary">
-
+		<div class="col-md-3">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h4>Veuillez indiquez votre ville</h4>
 				</div>
@@ -13,93 +10,85 @@
 					<div class="row">
 						<div class="col-md-4 sidebar">
 							<ul class="nav nav-sidebar" *ngFor="let v of villes">
-								<li><a (click)="chercherCinemas(v.name)">{{v.name}}</a></li><br>
+								<li><button class="btn btn-primary"
+										(click)="chercherCinemas(v.name)">{{v.name}}</button>
+								</li><br>
 							</ul>
 						</div>
-						<div class=" col-md-6">
-							<input [(ngModel)]="nomVille" type="text" id="input" class="form-control" mdbInput>
-							<br>
-							<button class="btn btn-primary" (click)="chercherCinemas(nomVille)">Valider</button>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-md-8">
-
-
-			<table class="table table-striped">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<a class="navbar-brand">Les cinemas</a>
-							<div *ngIf="cinemas.length>0"></div>
+		<div class="col-md-9">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4>Les Cinemas</h4>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-4 sidebar">
+							<ul class="nav navbar-nav" *ngFor="let c of cinemas">
+								<li><button class="btn btn-primary espace"
+										(click)="chercherSalles(c.id)">{{c.name}}</button></li>
+							</ul>
 						</div>
-						<ul class="nav navbar-nav" *ngFor="let c of cinemas">
-							<li><a (click)="chercherSalles(c.id)">{{c.name}}</a></li>
-						</ul>
 					</div>
-				</nav>
-
-				<!-- <tr *ngFor="let c of cinemas">
-					<td>{{c.id}}</td>
-					<td>{{c.name}}</td>
-					<td><a class="btn btn-success" (click)="chercherSalles(c.id)">Choisir</a></td>
-
-				</tr> -->
-			</table>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-12">
-		<div *ngFor="let s of salles">
-			<div class="panel panel-primary">
-
-				<div class="panel-heading">
-
-					<button class="btn btn-primary" (click)="chercherProjections(s.id)">{{s.name}}</button>
-				</div>
-			</div>
-			<div class="panel-body">
-				<div *ngFor="let projection of s.projectionFilms">
-
-					<div class="col-md-6 maxDiv">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<p>Titre : {{projection.film.titre}}</p>
-							</div>
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-md-3 maxImage">
-										<img class="maxImage" src="{{projection.film.photo}}" alt="image" />
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<div *ngFor="let s of salles">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<button class="btn btn-primary" (click)="chercherProjections(s.id)">{{s.name}}</button>
+					</div>
+					<div class="panel-body">
+						<div *ngFor="let projection of s.projectionFilms">
+							<div class="col-md-6 maxDiv">
+								<div class="panel panel-info">
+									<div class="panel-heading">
+										<p>Titre : {{projection.film.titre}}</p>
 									</div>
-									<div class="col-md-9">
-										<div class="panel panel-primary">
-											<div class="panel-heading">
-												<p>Seances</p>
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-3 maxImage">
+												<img class="maxImage" src="{{projection.film.photo}}" alt="image" />
 											</div>
-											<div class="panel-body">
-												<div class="table table-striped">
-													<tr>
-														<td (click)="afficherPlaces(projection.pl)">{{projection.seance.heureDebut | date:'M/d/yy'}}</td>
-													</tr>
+											<div class="col-md-6 col-md-offset-1">
+												<div class="panel panel-info">
+													<div class="panel-heading">
+														<p>Seances</p>
+													</div>
+													<div class="panel-body">
+														<div class="table">
+															<thead>
+																<tr>Date de Seance</tr>
+																<tr></tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td (click)="afficherPlaces(projection.pl)">
+																		{{projection.seance.heureDebut | date:'M/d/yy'}}
+																	</td>
+																	<button class="btn btn-primary espace">Choisir</button>
+																</tr>
+															</tbody>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
-
 							</div>
-
-
 						</div>
 					</div>
 				</div>
-			</div>F
+			</div>
 		</div>
 	</div>
 </div>
