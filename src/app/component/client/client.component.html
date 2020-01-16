@@ -40,7 +40,7 @@
 								<tr *ngFor="let c of cinemas">
 									<td>{{c.id}}</td>
 									<td>{{c.name}}</td>
-									<td><a class="btn btn-success" (click)="chercherSalles(c.id)"  >Choisir</a></td>
+									<td><a class="btn btn-success" (click)="chercherSalles(c.id)">Choisir</a></td>
 									<!-- <td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
 								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td> -->
 								</tr>
@@ -48,26 +48,72 @@
 						</div>
 					</div>
 				</div>
-			<div class="col-md-8">
-				<div class="panel panel-danger">
-					<div class="panel-heading">
-						<h4>Lister les salles</h4>
-					</div>
-					<div class="panel-body">
-		<!--		<div *ngIf="salles.length > 0"> -->		
+				<!-- <div class="col-md-8">
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<h4>Lister les salles</h4>
+						</div>
+						<div class="panel-body">
+									<div *ngIf="salles.length > 0">
 							<table class="table table-striped">
 								<tr>
 									<td>name</td>
 								</tr>
 								<tr *ngFor="let s of salles">
 									<td>{{s.name}}</td>
-									<td><a class="btn btn-success"  >Choisir</a></td>
-									<!-- <td><a class="btn btn-danger" (click)="detailFilm(f.id)">Detail</a></td>
-								<td><button class="btn btn-success" (click)="deleteFilm(f.id)">Delete</button></td> -->
+									<td><a class="btn btn-success">Choisir</a></td>
 								</tr>
 							</table>
 						</div>
 					</div>
+				</div> -->
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-primary">
+
+				<div class="panel-heading">
+					<div *ngFor="let s of salles">
+						<button class="btn btn-primary" (click)="chercherProjections(s.id)">{{s.name}}</button>
+					</div>
+				</div>
+				<div class="panel-body">
+
+					<div *ngFor="let projection of projectionFilms">
+
+						<div class="col-md-3 maxDiv" >
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<p>Titre : {{projection.film.titre}}</p>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-3 maxImage">
+											<img class="maxImage" src="{{projection.film.photo}}" alt="image"/>
+										</div>
+										<div class="col-md-9">
+											<div class="panel panel-primary">
+												<div class="panel-heading">
+													<p>Seances</p>
+												</div>
+												<div class="panel-body">
+													<div class="table table-striped">
+														<tr>
+															<td>{{projection.seance.heureDebut | date:'M/d/yy'}}</td>
+														</tr>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
