@@ -16,8 +16,8 @@ export class TicketComponent implements OnInit {
   ticket: Ticket = {
     id: 0 ,
     nomClient: '',
-    prix:0 ,
-    codePayement:0 ,
+    prix: 0 ,
+    codePayement: 0 ,
     reservee: null,
     place: new Place(),
     projection: new Projection()
@@ -49,12 +49,12 @@ export class TicketComponent implements OnInit {
       this.ticket.prix = 0;
       this.ticket.codePayement = 0;
       this.ticket.reservee = null;
-      this.ticket.place = new Place();
-      this.ticket.projection = new Projection();
+      this.test = 0;
       this.getAllTickets();
       this.getAllSalles();
       this.getAllProjections();
-      this.test = 0;
+      this.ticket.place = new Place();
+      this.ticket.projection = new Projection();
     })
   } // fin save
 
