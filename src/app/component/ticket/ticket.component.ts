@@ -49,14 +49,14 @@ export class TicketComponent implements OnInit {
       this.ticket.prix = 0;
       this.ticket.codePayement = 0;
       this.ticket.reservee = null;
-      this.ticket.place = new Place();
-      this.ticket.projection = new Projection();
+      this.test = 0;
       this.getAllTickets();
       this.getAllSalles();
       this.getAllProjections();
-      this.test = 0;
+      this.ticket.place = new Place();
+      this.ticket.projection = new Projection();
     })
-  } // fin save
+  } // fin save 
 
     getAllTickets() {
       this.ticketService.getAllTickets()
@@ -64,7 +64,7 @@ export class TicketComponent implements OnInit {
         this.tickets = data
         this.test = 0;
       })
-    } // getAll
+    } // getAll 
 
     detailTicket(id: number) {
       this.ticketService.getTicket(id)
@@ -74,9 +74,9 @@ export class TicketComponent implements OnInit {
       })
     } // fin detail
 
-    deleteTicket(id: number) {
+    deleteTicket (id: number) {
       this.ticketService.deleteTicket(id)
-      .subscribe (data => {
+      .subscribe (data =>{
       this.getAllTickets();
       this.test = 0;
       })
