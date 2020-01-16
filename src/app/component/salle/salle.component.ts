@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SalleService } from 'src/app/service/salle.service';
 import { Cinema } from 'src/app/models/cinema.model';
 import { CinemaService } from 'src/app/service/cinema.service';
+import { Projection } from 'src/app/models/projection.model';
 
 @Component({
   selector: 'app-salle',
@@ -16,7 +17,8 @@ export class SalleComponent implements OnInit {
     id: 0,
     name: '',
     nombrePlaces: 0,
-    cinema: new Cinema()
+    cinema: new Cinema(),
+    projectionFilms: new Array<Projection>()
   }
 
   // Liste des cinemas

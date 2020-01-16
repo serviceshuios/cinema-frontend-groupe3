@@ -63,6 +63,11 @@ export class ClientComponent implements OnInit {
     this.cinemaService.chercherSallesCinema(idCinema)
     .subscribe (data =>{
       this.salles = data;
+      this.salles.forEach(salle => {
+        this.salleService.chercherProjectionsSalle(salle.id).subscribe(data =>{
+          salle.projectionFilms = data;
+        })
+      });
       this.idCinema = 0;
     })
   }
