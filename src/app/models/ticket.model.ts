@@ -8,5 +8,5 @@ export class Ticket {
 	public codePayement: number;
 	public reservee: boolean;
 	public place: Place;
-	public projection: Projection;
+	public projectionFilm: Projection;
 } // fin classe

@@ -20,7 +20,7 @@ export class TicketComponent implements OnInit {
     codePayement: 0 ,
     reservee: null,
     place: new Place(),
-    projection: new Projection()
+    projectionFilm: new Projection()
   }
   
 
@@ -55,7 +55,7 @@ export class TicketComponent implements OnInit {
       this.getAllSalles();
       this.getAllProjections();
       this.ticket.place = new Place();
-      this.ticket.projection = new Projection();
+      this.ticket.projectionFilm = new Projection();
     })
   } // fin save
 
