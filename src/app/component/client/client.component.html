@@ -71,10 +71,35 @@
 															</thead>
 															<tbody>
 																<tr>
-																	<td (click)="afficherPlaces(projection.pl)">
+																	<td>
 																		{{projection.seance.heureDebut | date:'M/d/yy'}}
 																	</td>
-																	<button class="btn btn-primary espace">Choisir</button>
+																	<button
+																		class="btn btn-primary espace" (click)="chercherTickets(projection.id)">Choisir</button>
+																</tr>
+															</tbody>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row" *ngIf="tickets.length>0">
+											<div class="col-md-6 col-md-offset-1">
+												<div class="panel panel-info">
+													<div class="panel-heading">
+														<p>Places</p>
+													</div>
+													<div class="panel-body">
+														<div class="table">
+															<thead>
+																<tr>Places disponibles</tr>
+																<tr></tr>
+															</thead>
+															<tbody *ngFor="let t of tickets">
+																<tr>
+																	<td (click)="afficherPlaces(projection.id)">
+																		{{t.place.numero}}
+																	</td>
 																</tr>
 															</tbody>
 														</div>

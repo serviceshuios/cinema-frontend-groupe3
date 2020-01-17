@@ -6,6 +6,7 @@ import { ProjectionService } from 'src/app/service/projection.service';
 import { SalleService } from 'src/app/service/salle.service';
 import { Projection } from 'src/app/models/projection.model';
 import { Place } from 'src/app/models/place.model';
+import { Ticket } from 'src/app/models/ticket.model';
 
 @Component({
   selector: 'app-client',
@@ -27,10 +28,14 @@ export class ClientComponent implements OnInit {
   villes;
   salles;
   projectionFilms;
+  tickets: Array<Ticket> = [];
 
 
 
-  constructor(private villeService: VilleService, private cinemaService: CinemaService, private salleService: SalleService) { }
+  constructor(private villeService: VilleService,
+              private cinemaService: CinemaService,
+              private salleService: SalleService,
+              private projectionService: ProjectionService) { }
 
   ngOnInit() {
     this.getAllVilles();
@@ -57,6 +62,12 @@ export class ClientComponent implements OnInit {
     chercherProjections(idSalle: number) {
     this.salleService.chercherProjectionsSalle(idSalle).subscribe(data => {
       this.projectionFilms = data;
+    })
+  } // fin chercheProjections
+
+  chercherTickets(idProjection: number) {
+    this.projectionService.getAllTicketsProjection(idProjection).subscribe(data => {
+      this.tickets = data;
     })
   } // fin chercheProjections
 

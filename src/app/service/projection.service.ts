@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Projection } from 'src/app/models/projection.model'
+import { Ticket } from '../models/ticket.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class ProjectionService {
 
   public getAllProjections(): Observable<Projection> {
    return this.httpClient.get<Projection>(this.host + '/projections/')
+  }
+
+  public getAllTicketsProjection(id: number): Observable<Array<Ticket>> {
+   return this.httpClient.get<Array<Ticket>>(this.host + '/projections/' + id + '/tickets')
   }
 
   public getProjection(id: number): Observable<Projection> {
