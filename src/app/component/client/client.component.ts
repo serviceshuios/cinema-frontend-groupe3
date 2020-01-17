@@ -68,19 +68,25 @@ export class ClientComponent implements OnInit {
     })
   } // fin chercheProjections
 
-  chercherTickets(idP: number, idS: number) {
-    this.projectionService.getAllTicketsProjection(idP).subscribe(data => {
-      this.salles.forEach(s => {
-        if (s.id === idS) {
-          s.projectionFilms.forEach(p => {
-            if (p.id === idP) {
+  // chercherTickets(idP: number, idS: number) {
+  //   this.projectionService.getAllTicketsProjection(idP).subscribe(data => {
+  //     this.salles.forEach(s => {
+  //       if (s.id === idS) {
+  //         s.projectionFilms.forEach(p => {
+  //           if (p.id === idP) {
+  //             p.tickets = data;
+  //           }
+  //         });
+  //       }
+  //     });
+  //   })
+  // } // fin chercheProjections
+
+    chercherTickets(p: Projection) {
+    this.projectionService.getAllTicketsProjection(p.id).subscribe(data => {
               p.tickets = data;
-            }
-          });
-        }
-      });
     })
-  } // fin chercheProjections
+  }
 
   chercherSalles(idCinema: number) {
     this.cinemaService.chercherSallesCinema(idCinema)
