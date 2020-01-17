@@ -39,7 +39,7 @@
 						<input [(ngModel)]="place.latitude" class="form-control" placeholder="latitude"><br>
 						<label>Altitude: </label><br>
 						<input [(ngModel)]="place.altitude" class="form-control" placeholder="altitude"><br>
-						<label>Choix de la place: </label><br>
+						<label>Choix de la salle: </label><br>
 						<select class="form-control" [(ngModel)]="place.salle">
 							<option *ngFor="let s of salles" [ngValue]="s">{{s.name}}</option>
 						</select><br>
