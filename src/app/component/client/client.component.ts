@@ -7,6 +7,7 @@ import { SalleService } from 'src/app/service/salle.service';
 import { Projection } from 'src/app/models/projection.model';
 import { Place } from 'src/app/models/place.model';
 import { Ticket } from 'src/app/models/ticket.model';
+import { Salle } from 'src/app/models/salle.model';
 import { TicketService } from 'src/app/service/ticket.service';
 
 @Component({
@@ -16,35 +17,35 @@ import { TicketService } from 'src/app/service/ticket.service';
 })
 export class ClientComponent implements OnInit {
 
-  /*Les déclarations villes*/ 
+  /*Les déclarations villes*/
   nomVille: "";
   idVille = 0;
 
   /*Les déclatation cinemas*/
-  idCinema =0;
+  idCinema = 0;
 
   afficherPlace: Array<Place> = [];
   cinemas: Array<Cinema> = [];
 
   villes;
-  salles;
-  projectionFilms;
+  salles: Array<Salle>;
+  projectionFilms: Array<Projection> = [];
   tickets: Array<Ticket> = [];
 
 
 
   constructor(private villeService: VilleService,
-              private cinemaService: CinemaService,
-              private salleService: SalleService,
-              private projectionService: ProjectionService,
-              private ticketService: TicketService) { }
+    private cinemaService: CinemaService,
+    private salleService: SalleService,
+    private projectionService: ProjectionService,
+    private ticketService: TicketService) { }
 
   ngOnInit() {
     this.getAllVilles();
   }
 
-  getAllVilles(){
-    this.villeService.getAllVilles().subscribe(data =>{
+  getAllVilles() {
+    this.villeService.getAllVilles().subscribe(data => {
       this.villes = data;
     });
   } // fin getAll
@@ -61,32 +62,40 @@ export class ClientComponent implements OnInit {
     })
   } // fin cherchecinemas
 
-    chercherProjections(idSalle: number) {
+  chercherProjections(idSalle: number) {
     this.salleService.chercherProjectionsSalle(idSalle).subscribe(data => {
       this.projectionFilms = data;
     })
   } // fin chercheProjections
 
-  chercherTickets(projection: Projection) {
-    this.projectionService.getAllTicketsProjection(projection.id).subscribe(data => {
-      projection.tickets = data;
+  chercherTickets(idP: number, idS: number) {
+    this.projectionService.getAllTicketsProjection(idP).subscribe(data => {
+      this.salles.forEach(s => {
+        if (s.id === idS) {
+          s.projectionFilms.forEach(p => {
+            if (p.id === idP) {
+              p.tickets = data;
+            }
+          });
+        }
+      });
     })
   } // fin chercheProjections
 
   chercherSalles(idCinema: number) {
     this.cinemaService.chercherSallesCinema(idCinema)
-    .subscribe (data =>{
-      this.salles = data;
-      this.salles.forEach(salle => {
-        this.salleService.chercherProjectionsSalle(salle.id).subscribe(data =>{
-          salle.projectionFilms = data;
-        })
-      });
-      this.idCinema = 0;
-    })
+      .subscribe(data => {
+        this.salles = data;
+        this.salles.forEach(salle => {
+          this.salleService.chercherProjectionsSalle(salle.id).subscribe(data => {
+            salle.projectionFilms = data;
+          })
+        });
+        this.idCinema = 0;
+      })
   }
 
-  reserverPlace(nomClient: string, codePay: number, ticket: Ticket){
+  reserverPlace(nomClient: string, codePay: number, ticket: Ticket) {
     ticket.nomClient = nomClient;
     ticket.codePayement = codePay;
     ticket.reservee = true;

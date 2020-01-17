@@ -11,5 +11,5 @@ public prix: number;
 public salle: Salle;
 public film: Film;
 public seance: Seance;
-public tickets: Array<Ticket>;
+public tickets: Array<Ticket> = [];
 }

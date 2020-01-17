@@ -9,6 +9,7 @@ import { FilmService } from 'src/app/service/film.service';
 import { Categorie } from 'src/app/models/categorie.model';
 import { Seance } from 'src/app/models/seance.model';
 import { SeanceService } from 'src/app/service/seance.service';
+import { Ticket } from 'src/app/models/ticket.model';
 
 @Component({
   selector: 'app-projectionfilm',
@@ -23,7 +24,8 @@ export class ProjectionfilmComponent implements OnInit {
     prix: 0,
     film: new Film(),
     salle: new Salle(),
-    seance: new Seance()
+    seance: new Seance(),
+    tickets: new Array<Ticket>()
   }
 
   films;
