@@ -80,9 +80,11 @@
 															</tbody>
 														</div>
 														<hr>
-														<div *ngFor="let t of tickets">
-															<button class="btn btn-primary"
-																(click)="afficherPlaces(projection.id)">{{t.place.numero}}</button>
+														<div class="row">
+															<span *ngFor="let t of tickets">
+																<button class="btn btn-primary espacePlace"
+																	(click)="afficherPlaces(projection.id)">{{t.place.numero}}</button>
+															</span>
 														</div>
 													</div>
 												</div>
