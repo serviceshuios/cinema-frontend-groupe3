@@ -75,7 +75,7 @@
 																		{{projection.seance.heureDebut | date:'M/d/yy'}}
 																	</td>
 																	<button class="btn btn-primary espace"
-																		(click)="chercherTickets(projection.id)">Choisir</button>
+																		(click)="chercherTickets(projection)">Choisir</button>
 																</tr>
 															</tbody>
 														</div>
@@ -83,7 +83,7 @@
 														<div class="row">
 															<span *ngFor="let t of tickets">
 																<button class="btn btn-primary espacePlace"
-																	(click)="afficherPlaces(projection.id)">{{t.place.numero}}</button>
+																	>{{t.place.numero}}</button>
 															</span>
 														</div>
 													</div>
